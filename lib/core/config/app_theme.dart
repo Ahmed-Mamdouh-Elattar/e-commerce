@@ -18,6 +18,13 @@ class AppTheme {
         fontWeight: FontWeight.bold,
       ),
     ),
+    inputDecorationTheme: const InputDecorationTheme(
+      filled: true,
+      fillColor: AppColor.bgLight2,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(4)),
+      ),
+    ),
   );
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
@@ -31,6 +38,13 @@ class AppTheme {
         color: Colors.white,
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
+      ),
+    ),
+    inputDecorationTheme: const InputDecorationTheme(
+      filled: true,
+      fillColor: AppColor.bgDark2,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(4)),
       ),
     ),
   );
