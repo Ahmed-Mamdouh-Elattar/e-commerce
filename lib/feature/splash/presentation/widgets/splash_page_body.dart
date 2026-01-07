@@ -4,6 +4,7 @@ import 'package:e_commerce/core/helper/assets.gen.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class SplashPageBody extends HookWidget {
@@ -18,9 +19,12 @@ class SplashPageBody extends HookWidget {
       return () => timer.cancel();
     });
     return Center(
-      child: Image.asset(
-        Assets.images.splashLogo.path,
-      ).animate().scale(duration: 500.ms).fade(duration: 500.ms),
+      child: SizedBox(
+        width: 200.w,
+        child: Image.asset(
+          Assets.images.splashLogo.path,
+        ).animate().scale(duration: 500.ms).fade(duration: 500.ms),
+      ),
     );
   }
 }
