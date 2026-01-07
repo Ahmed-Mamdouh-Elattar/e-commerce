@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/config/app_theme.dart';
 import 'package:e_commerce/core/routing/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -30,6 +31,8 @@ class ECommerceApp extends StatelessWidget {
           child: MaterialApp.router(
             routerConfig: appRouter,
             debugShowCheckedModeBanner: false,
+            darkTheme: AppTheme.darkTheme,
+            theme: AppTheme.lightTheme,
             title: 'E-Commerce',
           ),
         );
