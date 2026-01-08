@@ -45,6 +45,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   go_router: ^17.0.1
   vector_graphics: ^1.1.19
+  connectivity_plus: ^7.0.0
 
 dev_dependencies:
   flutter_test:
