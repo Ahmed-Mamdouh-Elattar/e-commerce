@@ -8,4 +8,5 @@ class PageName {
       '$emailSignIn/$passwordSignInPath/$forgotPasswordPath';
   static const String createAccountPath = "create-account";
   static const String createAccount = '$emailSignIn/$createAccountPath';
+  static const String authCallbackPath = "auth-callback";
 }
