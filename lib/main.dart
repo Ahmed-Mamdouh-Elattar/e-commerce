@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/config/app_theme.dart';
-import 'package:e_commerce/core/routing/router.dart';
+import 'package:e_commerce/core/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,12 +27,15 @@ class ECommerceApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return MediaQuery(
-          data: const MediaQueryData(textScaler: TextScaler.linear(1)),
+          data: MediaQuery.of(
+            context,
+          ).copyWith(textScaler: const TextScaler.linear(1.0)),
           child: MaterialApp.router(
             routerConfig: appRouter,
             debugShowCheckedModeBanner: false,
             darkTheme: AppTheme.darkTheme,
             theme: AppTheme.lightTheme,
+            themeMode: ThemeMode.light,
             title: 'E-Commerce',
           ),
         );

@@ -8,9 +8,10 @@ class AppTheme {
     scaffoldBackgroundColor: AppColor.bgLight1,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColor.bgLight1,
-
       centerTitle: true,
       shadowColor: Colors.transparent,
+      elevation: 0,
+      toolbarHeight: kToolbarHeight,
       iconTheme: const IconThemeData(color: Colors.black),
       titleTextStyle: TextStyle(
         color: Colors.black,
@@ -23,16 +24,18 @@ class AppTheme {
       fillColor: AppColor.bgLight2,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderSide: BorderSide.none,
       ),
     ),
   );
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
-    scaffoldBackgroundColor: AppColor.bgLight1,
+    scaffoldBackgroundColor: AppColor.bgDark1,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColor.bgDark1,
       centerTitle: true,
       shadowColor: Colors.transparent,
+      elevation: 0,
       iconTheme: const IconThemeData(color: Colors.white),
       titleTextStyle: TextStyle(
         color: Colors.white,
@@ -45,6 +48,7 @@ class AppTheme {
       fillColor: AppColor.bgDark2,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderSide: BorderSide.none,
       ),
     ),
   );

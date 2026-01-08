@@ -105,4 +105,8 @@ class AppTextStyle {
     fontSize: 24.sp,
     fontWeight: FontWeight.w700,
   );
+  static TextStyle bold32 = TextStyle(
+    fontSize: 32.sp,
+    fontWeight: FontWeight.w700,
+  );
 }
