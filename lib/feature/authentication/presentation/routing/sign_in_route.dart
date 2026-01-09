@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/routing/page_name.dart';
+import 'package:e_commerce/feature/authentication/presentation/pages/auth_callback_page.dart';
 import 'package:e_commerce/feature/authentication/presentation/pages/create_account_page.dart';
 import 'package:e_commerce/feature/authentication/presentation/pages/email_sign_in_page.dart';
 import 'package:e_commerce/feature/authentication/presentation/pages/forgot_password_page.dart';
@@ -9,6 +10,10 @@ final signInRoute = GoRoute(
   path: PageName.emailSignIn,
   builder: (context, state) => const EmailSignInPage(),
   routes: [
+    GoRoute(
+      path: PageName.authCallbackPath,
+      builder: (context, state) => const AuthCallbackPage(),
+    ),
     GoRoute(
       path: PageName.passwordSignInPath,
       builder: (context, state) => const PasswordSignInPage(),
