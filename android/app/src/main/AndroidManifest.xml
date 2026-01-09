@@ -31,7 +31,8 @@
                 <!-- Accepts URIs that begin with YOUR_SCHEME://YOUR_HOST -->
                 <data
                     android:scheme="e-commerce"
-                    android:host="auth-callback" />
+                    android:host="email-sign-in" 
+                    android:pathPrefix="/auth-callback" />
             </intent-filter>
         </activity>
         <meta-data
