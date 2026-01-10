@@ -59,4 +59,19 @@ class AuthRepoImpl implements AuthRepo {
       throw Failure(message: e.toString());
     }
   }
+
+  @override
+  Future<void> updateUser(UserAttributes userAttributes) async {
+    try {
+      final result = await _connectivity.checkConnectivity();
+      if (result.contains(ConnectivityResult.none)) {
+        throw Failure(message: "No internet connection");
+      }
+      return await _authDataSource.updateUser(userAttributes);
+    } on AuthApiException catch (e) {
+      throw Failure(message: e.message);
+    } catch (e) {
+      throw Failure(message: e.toString());
+    }
+  }
 }

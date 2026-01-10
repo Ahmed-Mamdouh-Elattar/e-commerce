@@ -5,4 +5,5 @@ abstract class AuthRepo {
   Future<AuthResponse> signUp(UserModel userModel);
   Future<AuthResponse> signIn(UserModel userModel);
   Future<void> resetPassword(String email);
+  Future<void> updateUser(UserAttributes userAttributes);
 }
