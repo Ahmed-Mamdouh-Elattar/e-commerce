@@ -5,6 +5,7 @@ import 'package:e_commerce/core/helper/constansts.dart';
 abstract class AuthDataSource {
   Future<AuthResponse> signUp(UserModel userModel);
   Future<AuthResponse> signIn(UserModel userModel);
+  Future<void> resetPassword(String email);
 }
 
 class AuthDataSourceImpl implements AuthDataSource {
@@ -30,5 +31,10 @@ class AuthDataSourceImpl implements AuthDataSource {
           password: userModel.password,
         );
     return res;
+  }
+
+  @override
+  Future<void> resetPassword(String email) async {
+    await Supabase.instance.client.auth.resetPasswordForEmail(email);
   }
 }
