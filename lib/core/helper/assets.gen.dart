@@ -17,6 +17,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/email.png
   AssetGenImage get email => const AssetGenImage('assets/images/email.png');
 
+  /// File path: assets/images/error.png
+  AssetGenImage get error => const AssetGenImage('assets/images/error.png');
+
   /// File path: assets/images/google_icon.png
   AssetGenImage get googleIcon =>
       const AssetGenImage('assets/images/google_icon.png');
@@ -25,8 +28,17 @@ class $AssetsImagesGen {
   AssetGenImage get splashLogo =>
       const AssetGenImage('assets/images/splash_logo.png');
 
+  /// File path: assets/images/success.png
+  AssetGenImage get success => const AssetGenImage('assets/images/success.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [email, googleIcon, splashLogo];
+  List<AssetGenImage> get values => [
+    email,
+    error,
+    googleIcon,
+    splashLogo,
+    success,
+  ];
 }
 
 class Assets {
