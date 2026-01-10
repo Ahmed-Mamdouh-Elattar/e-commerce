@@ -143,7 +143,6 @@ class CreateAccountPageBody extends HookConsumerWidget {
     TextEditingController lastNameController,
   ) {
     if (formKey.currentState!.validate()) {
-      formKey.currentState!.save();
       ref
           .read(authProvider.notifier)
           .signUp(
