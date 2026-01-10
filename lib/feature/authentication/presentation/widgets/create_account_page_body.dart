@@ -57,6 +57,7 @@ class CreateAccountPageBody extends HookConsumerWidget {
               Text("Create Account", style: AppTextStyle.bold32),
               const SizedBox(height: 32),
               TextFormField(
+                textInputAction: TextInputAction.next,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Please enter your firstname";
@@ -68,6 +69,7 @@ class CreateAccountPageBody extends HookConsumerWidget {
               ),
               const SizedBox(height: 16),
               TextFormField(
+                textInputAction: TextInputAction.next,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Please enter your lastname";
@@ -79,6 +81,7 @@ class CreateAccountPageBody extends HookConsumerWidget {
               ),
               const SizedBox(height: 16),
               TextFormField(
+                textInputAction: TextInputAction.next,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your email address';
@@ -90,6 +93,17 @@ class CreateAccountPageBody extends HookConsumerWidget {
               ),
               const SizedBox(height: 16),
               TextFormField(
+                textInputAction: TextInputAction.send,
+                onFieldSubmitted: (value) {
+                  validateAndSignUp(
+                    formKey,
+                    ref,
+                    emailController,
+                    passwordController,
+                    firstNameController,
+                    lastNameController,
+                  );
+                },
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your password';
@@ -103,19 +117,14 @@ class CreateAccountPageBody extends HookConsumerWidget {
               CustomElevetedButton(
                 label: "Continue",
                 onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    formKey.currentState!.save();
-                    ref
-                        .read(authProvider.notifier)
-                        .signUp(
-                          userModel: UserModel(
-                            email: emailController.text,
-                            password: passwordController.text,
-                            firstName: firstNameController.text,
-                            lastName: lastNameController.text,
-                          ),
-                        );
-                  }
+                  validateAndSignUp(
+                    formKey,
+                    ref,
+                    emailController,
+                    passwordController,
+                    firstNameController,
+                    lastNameController,
+                  );
                 },
               ),
             ],
@@ -123,5 +132,28 @@ class CreateAccountPageBody extends HookConsumerWidget {
         ),
       ),
     );
+  }
+
+  void validateAndSignUp(
+    GlobalKey<FormState> formKey,
+    WidgetRef ref,
+    TextEditingController emailController,
+    TextEditingController passwordController,
+    TextEditingController firstNameController,
+    TextEditingController lastNameController,
+  ) {
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      ref
+          .read(authProvider.notifier)
+          .signUp(
+            userModel: UserModel(
+              email: emailController.text,
+              password: passwordController.text,
+              firstName: firstNameController.text,
+              lastName: lastNameController.text,
+            ),
+          );
+    }
   }
 }
