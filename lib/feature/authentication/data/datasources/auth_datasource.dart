@@ -35,6 +35,9 @@ class AuthDataSourceImpl implements AuthDataSource {
 
   @override
   Future<void> resetPassword(String email) async {
-    await Supabase.instance.client.auth.resetPasswordForEmail(email);
+    await Supabase.instance.client.auth.resetPasswordForEmail(
+      email,
+      redirectTo: kForgotPasswordRedirectUrl,
+    );
   }
 }
