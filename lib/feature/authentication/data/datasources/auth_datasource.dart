@@ -14,7 +14,7 @@ class AuthDataSourceImpl implements AuthDataSource {
     final AuthResponse res = await Supabase.instance.client.auth.signUp(
       email: userModel.email,
       password: userModel.password,
-      emailRedirectTo: kEmailSignInRedirectUrl,
+      emailRedirectTo: kEmailSignUpRedirectUrl,
       data: {
         'first_name': userModel.firstName,
         'last_name': userModel.lastName,
