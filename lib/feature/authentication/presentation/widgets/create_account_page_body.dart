@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/config/app_text_style.dart';
+import 'package:e_commerce/core/helper/assets.gen.dart';
 import 'package:e_commerce/core/helper/check_is_valid_email.dart';
 import 'package:e_commerce/core/helper/check_password_less_than_6.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
@@ -25,23 +26,25 @@ class CreateAccountPageBody extends HookConsumerWidget {
     ref.listen(authProvider, (previous, next) {
       next.whenOrNull(
         data: (data) {
-          if (data != null) {
-            context.pop();
-            showMessageDialog(
-              context,
-              message:
-                  "We have sent you a verification email Please check your email",
-              title: "Success",
-              isDismissible: true,
-            );
-          }
+          context.pop();
+          showMessageDialog(
+            context,
+            message:
+                "We have sent you a verification email Please check your email",
+            image: Assets.images.success.path,
+            isDismissible: false,
+          );
         },
         loading: () {
           showLoadingDialog(context);
         },
         error: (error, stackTrace) {
           context.pop();
-          showMessageDialog(context, message: error.toString(), title: "Error");
+          showMessageDialog(
+            context,
+            message: error.toString(),
+            image: Assets.images.error.path,
+          );
         },
       );
     });
