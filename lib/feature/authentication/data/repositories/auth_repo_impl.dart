@@ -1,4 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:e_commerce/core/error/failure.dart';
 import 'package:e_commerce/feature/authentication/data/datasources/auth_datasource.dart';
 import 'package:e_commerce/feature/authentication/data/models/user_model.dart';
 import 'package:e_commerce/feature/authentication/domain/repositories/auth_repo.dart';
@@ -16,19 +17,46 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   Future<AuthResponse> signUp(UserModel userModel) async {
-    final result = await _connectivity.checkConnectivity();
-    if (result.contains(ConnectivityResult.none)) {
-      throw Exception('No internet connection');
+    try {
+      final result = await _connectivity.checkConnectivity();
+      if (result.contains(ConnectivityResult.none)) {
+        throw Failure(message: "No internet connection");
+      }
+      return await _authDataSource.signUp(userModel);
+    } on AuthApiException catch (e) {
+      throw Failure(message: e.message);
+    } catch (e) {
+      throw Failure(message: e.toString());
     }
-    return await _authDataSource.signUp(userModel);
   }
 
   @override
   Future<AuthResponse> signIn(UserModel userModel) async {
-    final result = await _connectivity.checkConnectivity();
-    if (result.contains(ConnectivityResult.none)) {
-      throw Exception('No internet connection');
+    try {
+      final result = await _connectivity.checkConnectivity();
+      if (result.contains(ConnectivityResult.none)) {
+        throw Failure(message: "No internet connection");
+      }
+      return await _authDataSource.signIn(userModel);
+    } on AuthApiException catch (e) {
+      throw Failure(message: e.message);
+    } catch (e) {
+      throw Failure(message: e.toString());
     }
-    return await _authDataSource.signIn(userModel);
+  }
+
+  @override
+  Future<void> resetPassword(String email) async {
+    try {
+      final result = await _connectivity.checkConnectivity();
+      if (result.contains(ConnectivityResult.none)) {
+        throw Failure(message: "No internet connection");
+      }
+      return await _authDataSource.resetPassword(email);
+    } on AuthApiException catch (e) {
+      throw Failure(message: e.message);
+    } catch (e) {
+      throw Failure(message: e.toString());
+    }
   }
 }
