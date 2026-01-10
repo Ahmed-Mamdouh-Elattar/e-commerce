@@ -86,9 +86,6 @@ class CreateAccountPageBody extends HookConsumerWidget {
               TextFormField(
                 textInputAction: TextInputAction.next,
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your email address';
-                  }
                   return checkIsValidEmail(value);
                 },
                 controller: emailController,
@@ -108,9 +105,6 @@ class CreateAccountPageBody extends HookConsumerWidget {
                   );
                 },
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your password';
-                  }
                   return checkIsPasswordLessThan6(value);
                 },
                 controller: passwordController,
