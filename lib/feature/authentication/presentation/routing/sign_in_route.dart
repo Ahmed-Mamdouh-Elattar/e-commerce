@@ -4,7 +4,9 @@ import 'package:e_commerce/feature/authentication/presentation/pages/create_acco
 import 'package:e_commerce/feature/authentication/presentation/pages/email_sign_in_page.dart';
 import 'package:e_commerce/feature/authentication/presentation/pages/forgot_password_page.dart';
 import 'package:e_commerce/feature/authentication/presentation/pages/password_sign_in_page.dart';
+import 'package:e_commerce/feature/authentication/presentation/provider/email_provider/email_provider.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final signInRoute = GoRoute(
   path: PageName.emailSignIn,
@@ -16,7 +18,10 @@ final signInRoute = GoRoute(
     ),
     GoRoute(
       path: PageName.passwordSignInPath,
-      builder: (context, state) => const PasswordSignInPage(),
+      builder: (context, state) => ProviderScope(
+        overrides: [emailProvider.overrideWithValue(state.extra.toString())],
+        child: const PasswordSignInPage(),
+      ),
       routes: [
         GoRoute(
           path: PageName.forgotPasswordPath,
