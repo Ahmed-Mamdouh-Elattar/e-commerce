@@ -4,6 +4,7 @@ import 'package:e_commerce/core/helper/constansts.dart';
 
 abstract class AuthDataSource {
   Future<AuthResponse> signUp(UserModel userModel);
+  Future<AuthResponse> signIn(UserModel userModel);
 }
 
 class AuthDataSourceImpl implements AuthDataSource {
@@ -18,6 +19,16 @@ class AuthDataSourceImpl implements AuthDataSource {
         'last_name': userModel.lastName,
       },
     );
+    return res;
+  }
+
+  @override
+  Future<AuthResponse> signIn(UserModel userModel) async {
+    final AuthResponse res = await Supabase.instance.client.auth
+        .signInWithPassword(
+          email: userModel.email,
+          password: userModel.password,
+        );
     return res;
   }
 }
