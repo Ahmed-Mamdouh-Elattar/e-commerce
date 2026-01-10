@@ -2,7 +2,7 @@ import 'package:e_commerce/core/routing/page_name.dart';
 import 'package:e_commerce/feature/authentication/presentation/pages/auth_callback_page.dart';
 import 'package:e_commerce/feature/authentication/presentation/pages/create_account_page.dart';
 import 'package:e_commerce/feature/authentication/presentation/pages/email_sign_in_page.dart';
-import 'package:e_commerce/feature/authentication/presentation/pages/forgot_password_page.dart';
+import 'package:e_commerce/feature/authentication/presentation/pages/update_password_page.dart';
 import 'package:e_commerce/feature/authentication/presentation/pages/password_sign_in_page.dart';
 import 'package:e_commerce/feature/authentication/presentation/provider/email_provider/email_provider.dart';
 import 'package:go_router/go_router.dart';
@@ -24,8 +24,8 @@ final signInRoute = GoRoute(
       ),
       routes: [
         GoRoute(
-          path: PageName.forgotPasswordPath,
-          builder: (context, state) => const ForgotPasswordPage(),
+          path: PageName.updatePasswordPath,
+          builder: (context, state) => const UpdatePasswordPage(),
         ),
       ],
     ),
