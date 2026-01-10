@@ -6,6 +6,7 @@ abstract class AuthDataSource {
   Future<AuthResponse> signUp(UserModel userModel);
   Future<AuthResponse> signIn(UserModel userModel);
   Future<void> resetPassword(String email);
+  Future<void> updateUser(UserAttributes userAttributes);
 }
 
 class AuthDataSourceImpl implements AuthDataSource {
@@ -37,7 +38,12 @@ class AuthDataSourceImpl implements AuthDataSource {
   Future<void> resetPassword(String email) async {
     await Supabase.instance.client.auth.resetPasswordForEmail(
       email,
-      redirectTo: kForgotPasswordRedirectUrl,
+      redirectTo: kUpdatePasswordRedirectUrl,
     );
+  }
+
+  @override
+  Future<void> updateUser(UserAttributes userAttributes) {
+    return Supabase.instance.client.auth.updateUser(userAttributes);
   }
 }
