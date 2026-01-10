@@ -1,4 +1,6 @@
 import 'package:e_commerce/core/config/app_text_style.dart';
+import 'package:e_commerce/core/helper/check_is_valid_email.dart';
+import 'package:e_commerce/core/helper/check_password_less_than_6.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
 import 'package:e_commerce/core/helper/show_custom_dialogs.dart';
 import 'package:e_commerce/core/widgets/custom_eleveted_button.dart';
@@ -121,24 +123,5 @@ class CreateAccountPageBody extends HookConsumerWidget {
         ),
       ),
     );
-  }
-
-  String? checkIsPasswordLessThan6(String value) {
-    if (value.length < 6) {
-      return 'Password must be at least 6 characters long';
-    }
-    return null;
-  }
-
-  String? checkIsValidEmail(String value) {
-    RegExp regExp = RegExp(
-      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
-    );
-
-    if (!regExp.hasMatch(value)) {
-      return 'Please enter a valid email address';
-    }
-
-    return null;
   }
 }
