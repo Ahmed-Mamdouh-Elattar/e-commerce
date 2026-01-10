@@ -22,4 +22,13 @@ class AuthRepoImpl implements AuthRepo {
     }
     return await _authDataSource.signUp(userModel);
   }
+
+  @override
+  Future<AuthResponse> signIn(UserModel userModel) async {
+    final result = await _connectivity.checkConnectivity();
+    if (result.contains(ConnectivityResult.none)) {
+      throw Exception('No internet connection');
+    }
+    return await _authDataSource.signIn(userModel);
+  }
 }

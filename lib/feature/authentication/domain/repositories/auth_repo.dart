@@ -3,4 +3,5 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class AuthRepo {
   Future<AuthResponse> signUp(UserModel userModel);
+  Future<AuthResponse> signIn(UserModel userModel);
 }
