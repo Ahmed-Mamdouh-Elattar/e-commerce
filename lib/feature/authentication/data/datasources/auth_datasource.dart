@@ -7,6 +7,7 @@ abstract class AuthDataSource {
   Future<AuthResponse> signIn(UserModel userModel);
   Future<void> resetPassword(String email);
   Future<void> updateUser(UserAttributes userAttributes);
+  Stream<AuthState> get authStateChange;
 }
 
 class AuthDataSourceImpl implements AuthDataSource {
@@ -46,4 +47,8 @@ class AuthDataSourceImpl implements AuthDataSource {
   Future<void> updateUser(UserAttributes userAttributes) {
     return Supabase.instance.client.auth.updateUser(userAttributes);
   }
+
+  @override
+  Stream<AuthState> get authStateChange =>
+      Supabase.instance.client.auth.onAuthStateChange;
 }
