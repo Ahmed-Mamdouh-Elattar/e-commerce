@@ -60,8 +60,8 @@ class AuthDataSourceImpl implements AuthDataSource {
   Future<AuthResponse> signInWithGoogle() async {
     final GoogleSignIn googleSignIn = GoogleSignIn.instance;
     await googleSignIn.initialize(
-      clientId: dotenv.env["ANDROID_CLIENT_ID"],
-      serverClientId: dotenv.env["WEB_CLIENT_ID"],
+      clientId: dotenv.env[androidClientId],
+      serverClientId: dotenv.env[webClientId],
     );
 
     final googleUser = await googleSignIn.authenticate();
