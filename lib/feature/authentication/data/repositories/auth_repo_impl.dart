@@ -74,4 +74,7 @@ class AuthRepoImpl implements AuthRepo {
       throw Failure(message: e.toString());
     }
   }
+
+  @override
+  Stream<AuthState> get authStateChange => _authDataSource.authStateChange;
 }
