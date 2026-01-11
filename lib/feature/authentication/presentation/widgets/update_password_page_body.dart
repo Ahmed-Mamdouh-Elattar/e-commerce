@@ -1,10 +1,15 @@
 import 'package:e_commerce/core/config/app_text_style.dart';
+import 'package:e_commerce/core/error/failure_extension.dart';
+import 'package:e_commerce/core/helper/assets.gen.dart';
 import 'package:e_commerce/core/helper/check_password_less_than_6.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
+import 'package:e_commerce/core/helper/show_custom_dialogs.dart';
 import 'package:e_commerce/core/widgets/custom_eleveted_button.dart';
+import 'package:e_commerce/feature/authentication/presentation/provider/auth_provider/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class UpdatePasswordPageBody extends HookConsumerWidget {
@@ -14,6 +19,31 @@ class UpdatePasswordPageBody extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final passwordController = useTextEditingController();
+
+    ref.listen(authProvider, (previous, next) {
+      next.when(
+        data: (data) {
+          context.pop();
+          showMessageDialog(
+            context,
+            image: Assets.images.success.path,
+            message: "Password Updated Successfully",
+          );
+          //then navigate to home
+        },
+        error: (error, stackTrace) {
+          context.pop();
+          showMessageDialog(
+            context,
+            image: Assets.images.error.path,
+            message: error.errorMessage,
+          );
+        },
+        loading: () {
+          showLoadingDialog(context);
+        },
+      );
+    });
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kPadding),
       child: SingleChildScrollView(
@@ -34,7 +64,16 @@ class UpdatePasswordPageBody extends HookConsumerWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              CustomElevetedButton(label: "Update", onPressed: () {}),
+              CustomElevetedButton(
+                label: "Update",
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    ref
+                        .read(authProvider.notifier)
+                        .updateUserPassword(password: passwordController.text);
+                  }
+                },
+              ),
             ],
           ),
         ),

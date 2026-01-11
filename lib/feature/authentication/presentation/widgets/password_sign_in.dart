@@ -1,7 +1,8 @@
 import 'package:e_commerce/core/config/app_text_style.dart';
+import 'package:e_commerce/core/error/failure_extension.dart';
+import 'package:e_commerce/core/helper/assets.gen.dart';
 import 'package:e_commerce/core/helper/check_password_less_than_6.dart';
 import 'package:e_commerce/core/helper/show_custom_dialogs.dart';
-import 'package:e_commerce/core/routing/page_name.dart';
 import 'package:e_commerce/core/widgets/custom_eleveted_button.dart';
 import 'package:e_commerce/feature/authentication/data/models/user_model.dart';
 import 'package:e_commerce/feature/authentication/presentation/provider/auth_provider/auth_provider.dart';
@@ -22,12 +23,26 @@ class PasswordSignIn extends HookConsumerWidget {
     ref.listen(authProvider, (previous, next) {
       next.when(
         data: (data) {
-          if (data != null) {
+          if (data) {
             context.pop();
+            showMessageDialog(
+              context,
+              message: "We Sent you an Email to reset your password.",
+              image: Assets.images.email.path,
+              isDismissible: false,
+            );
+          } else {
+            context.pop();
+            // then navigate to home page
           }
         },
         error: (error, stackTrace) {
-          showMessageDialog(context, message: error.toString(), title: "Error");
+          context.pop();
+          showMessageDialog(
+            context,
+            message: error.errorMessage,
+            image: Assets.images.error.path,
+          );
         },
         loading: () {
           showLoadingDialog(context);
@@ -66,7 +81,7 @@ class PasswordSignIn extends HookConsumerWidget {
               Text("Forgot Password ?", style: AppTextStyle.medium12),
               TextButton(
                 onPressed: () {
-                  context.push(PageName.forgotPassword);
+                  showForgotPasswordDialog(context, ref);
                 },
                 child: Text("Reset", style: AppTextStyle.bold12),
               ),
