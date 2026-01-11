@@ -1,4 +1,7 @@
+import 'package:e_commerce/core/error/failure.dart';
 import 'package:e_commerce/feature/authentication/data/models/user_model.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
 
@@ -8,6 +11,7 @@ abstract class AuthDataSource {
   Future<void> resetPassword(String email);
   Future<void> updateUser(UserAttributes userAttributes);
   Stream<AuthState> get authStateChange;
+  Future<AuthResponse> signInWithGoogle();
 }
 
 class AuthDataSourceImpl implements AuthDataSource {
@@ -51,4 +55,30 @@ class AuthDataSourceImpl implements AuthDataSource {
   @override
   Stream<AuthState> get authStateChange =>
       Supabase.instance.client.auth.onAuthStateChange;
+
+  @override
+  Future<AuthResponse> signInWithGoogle() async {
+    final GoogleSignIn googleSignIn = GoogleSignIn.instance;
+    await googleSignIn.initialize(
+      clientId: dotenv.env["ANDROID_CLIENT_ID"],
+      serverClientId: dotenv.env["WEB_CLIENT_ID"],
+    );
+
+    final googleUser = await googleSignIn.authenticate();
+
+    final googleAuth = googleUser.authentication;
+
+    final idToken = googleAuth.idToken;
+
+    if (idToken == null) {
+      throw Failure(message: "No ID Token found.");
+    }
+
+    final response = await Supabase.instance.client.auth.signInWithIdToken(
+      provider: OAuthProvider.google,
+
+      idToken: idToken,
+    );
+    return response;
+  }
 }
