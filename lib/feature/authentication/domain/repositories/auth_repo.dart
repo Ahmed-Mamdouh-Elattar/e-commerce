@@ -7,4 +7,5 @@ abstract class AuthRepo {
   Future<void> resetPassword(String email);
   Future<void> updateUser(UserAttributes userAttributes);
   Stream<AuthState> get authStateChange;
+  Future<AuthResponse> signInWithGoogle();
 }
