@@ -3,4 +3,4 @@ const double kHeightInAuthPages = 123;
 const String kEmailSignUpRedirectUrl =
     'e-commerce://email-sign-in/auth-callback';
 const String kUpdatePasswordRedirectUrl =
-    'e-commerce://email-sign-in/password-sign-in/update-password';
+    'e-commerce://email-sign-in/update-password';

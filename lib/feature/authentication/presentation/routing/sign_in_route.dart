@@ -13,6 +13,10 @@ final signInRoute = GoRoute(
   builder: (context, state) => const EmailSignInPage(),
   routes: [
     GoRoute(
+      path: PageName.updatePasswordPath,
+      builder: (context, state) => const UpdatePasswordPage(),
+    ),
+    GoRoute(
       path: PageName.authCallbackPath,
       builder: (context, state) => const AuthCallbackPage(),
     ),
@@ -22,12 +26,6 @@ final signInRoute = GoRoute(
         overrides: [emailProvider.overrideWithValue(state.extra.toString())],
         child: const PasswordSignInPage(),
       ),
-      routes: [
-        GoRoute(
-          path: PageName.updatePasswordPath,
-          builder: (context, state) => const UpdatePasswordPage(),
-        ),
-      ],
     ),
     GoRoute(
       path: PageName.createAccountPath,
