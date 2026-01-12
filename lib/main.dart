@@ -17,11 +17,12 @@ void main() async {
   runApp(const ProviderScope(child: ECommerceApp()));
 }
 
-class ECommerceApp extends StatelessWidget {
+class ECommerceApp extends ConsumerWidget {
   const ECommerceApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final appRouter = ref.watch(appRouterProvider);
     return ScreenUtilInit(
       designSize: const Size(390, 844),
       minTextAdapt: true,
