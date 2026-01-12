@@ -3,6 +3,7 @@ import 'package:e_commerce/core/error/failure_extension.dart';
 import 'package:e_commerce/core/helper/assets.gen.dart';
 import 'package:e_commerce/core/helper/check_password_less_than_6.dart';
 import 'package:e_commerce/core/helper/show_custom_dialogs.dart';
+import 'package:e_commerce/core/routing/page_name.dart';
 import 'package:e_commerce/core/widgets/custom_eleveted_button.dart';
 import 'package:e_commerce/feature/authentication/data/models/user_model.dart';
 import 'package:e_commerce/feature/authentication/presentation/provider/auth_provider/auth_provider.dart';
@@ -33,7 +34,7 @@ class PasswordSignIn extends HookConsumerWidget {
             );
           } else {
             context.pop();
-            // then navigate to home page
+            context.go(PageName.home);
           }
         },
         error: (error, stackTrace) {

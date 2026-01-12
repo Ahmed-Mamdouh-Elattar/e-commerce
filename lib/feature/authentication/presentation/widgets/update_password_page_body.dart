@@ -4,6 +4,7 @@ import 'package:e_commerce/core/helper/assets.gen.dart';
 import 'package:e_commerce/core/helper/check_password_less_than_6.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
 import 'package:e_commerce/core/helper/show_custom_dialogs.dart';
+import 'package:e_commerce/core/routing/page_name.dart';
 import 'package:e_commerce/core/widgets/custom_eleveted_button.dart';
 import 'package:e_commerce/feature/authentication/presentation/provider/auth_provider/auth_provider.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class UpdatePasswordPageBody extends HookConsumerWidget {
             image: Assets.images.success.path,
             message: "Password Updated Successfully",
           );
-          //then navigate to home
+          context.go(PageName.home);
         },
         error: (error, stackTrace) {
           context.pop();
