@@ -41,10 +41,21 @@ class $AssetsImagesGen {
   ];
 }
 
+class $AssetsSvgGen {
+  const $AssetsSvgGen();
+
+  /// File path: assets/svg/bag.svg
+  String get bag => 'assets/svg/bag.svg';
+
+  /// List of all assets
+  List<String> get values => [bag];
+}
+
 class Assets {
   const Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsSvgGen svg = $AssetsSvgGen();
 }
 
 class AssetGenImage {
