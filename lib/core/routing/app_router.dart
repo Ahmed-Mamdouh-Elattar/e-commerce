@@ -2,6 +2,7 @@ import 'package:e_commerce/core/providers/auth_state_change_provider/auth_state_
 import 'package:e_commerce/core/routing/page_name.dart';
 import 'package:e_commerce/core/routing/router_notifier.dart';
 import 'package:e_commerce/feature/authentication/presentation/routing/sign_in_route.dart';
+import 'package:e_commerce/feature/home/presentation/routing/home_route.dart';
 import 'package:e_commerce/feature/splash/presentation/routing/splash_route.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -24,6 +25,6 @@ final appRouterProvider = Provider<GoRouter>((ref) {
 
       return null;
     },
-    routes: [splashRoute, signInRoute],
+    routes: [splashRoute, signInRoute, homeRoute],
   );
 });
