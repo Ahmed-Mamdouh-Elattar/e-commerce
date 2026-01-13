@@ -95,8 +95,11 @@ class $AssetsSvgGen {
   /// File path: assets/svg/receipt.svg
   String get receipt => 'assets/svg/receipt.svg';
 
+  /// File path: assets/svg/search.svg
+  String get search => 'assets/svg/search.svg';
+
   /// List of all assets
-  List<String> get values => [bag, notificationbing, person, receipt];
+  List<String> get values => [bag, notificationbing, person, receipt, search];
 }
 
 class Assets {
