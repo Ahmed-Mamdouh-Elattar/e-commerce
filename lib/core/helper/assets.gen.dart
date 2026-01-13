@@ -14,6 +14,9 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/bag.png
+  AssetGenImage get bag => const AssetGenImage('assets/images/bag.png');
+
   /// File path: assets/images/email.png
   AssetGenImage get email => const AssetGenImage('assets/images/email.png');
 
@@ -33,6 +36,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    bag,
     email,
     error,
     googleIcon,
@@ -47,8 +51,17 @@ class $AssetsSvgGen {
   /// File path: assets/svg/bag.svg
   String get bag => 'assets/svg/bag.svg';
 
+  /// File path: assets/svg/notificationbing.svg
+  String get notificationbing => 'assets/svg/notificationbing.svg';
+
+  /// File path: assets/svg/person.svg
+  String get person => 'assets/svg/person.svg';
+
+  /// File path: assets/svg/receipt.svg
+  String get receipt => 'assets/svg/receipt.svg';
+
   /// List of all assets
-  List<String> get values => [bag];
+  List<String> get values => [bag, notificationbing, person, receipt];
 }
 
 class Assets {
