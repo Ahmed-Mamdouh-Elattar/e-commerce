@@ -17,6 +17,34 @@ class $AssetsImagesGen {
   /// File path: assets/images/bag.png
   AssetGenImage get bag => const AssetGenImage('assets/images/bag.png');
 
+  /// File path: assets/images/dummy_acccessories.png
+  AssetGenImage get dummyAcccessories =>
+      const AssetGenImage('assets/images/dummy_acccessories.png');
+
+  /// File path: assets/images/dummy_bag.png
+  AssetGenImage get dummyBag =>
+      const AssetGenImage('assets/images/dummy_bag.png');
+
+  /// File path: assets/images/dummy_hoodie.png
+  AssetGenImage get dummyHoodie =>
+      const AssetGenImage('assets/images/dummy_hoodie.png');
+
+  /// File path: assets/images/dummy_product1.png
+  AssetGenImage get dummyProduct1 =>
+      const AssetGenImage('assets/images/dummy_product1.png');
+
+  /// File path: assets/images/dummy_product2.png
+  AssetGenImage get dummyProduct2 =>
+      const AssetGenImage('assets/images/dummy_product2.png');
+
+  /// File path: assets/images/dummy_shoes.png
+  AssetGenImage get dummyShoes =>
+      const AssetGenImage('assets/images/dummy_shoes.png');
+
+  /// File path: assets/images/dummy_short.png
+  AssetGenImage get dummyShort =>
+      const AssetGenImage('assets/images/dummy_short.png');
+
   /// File path: assets/images/email.png
   AssetGenImage get email => const AssetGenImage('assets/images/email.png');
 
@@ -37,6 +65,13 @@ class $AssetsImagesGen {
   /// List of all assets
   List<AssetGenImage> get values => [
     bag,
+    dummyAcccessories,
+    dummyBag,
+    dummyHoodie,
+    dummyProduct1,
+    dummyProduct2,
+    dummyShoes,
+    dummyShort,
     email,
     error,
     googleIcon,
