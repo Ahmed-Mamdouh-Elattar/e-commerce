@@ -10,4 +10,6 @@ class PageName {
   static const String authCallbackPath = "auth-callback";
   static const String authCallback = '$emailSignIn/$authCallbackPath';
   static const String home = '/home';
+  static const String shopByCategoryPath = 'shop-by-category';
+  static const String shopByCategory = '$home/$shopByCategoryPath';
 }
