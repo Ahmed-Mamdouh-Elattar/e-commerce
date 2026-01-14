@@ -1,0 +1,21 @@
+import 'package:e_commerce/feature/home/presentation/widgets/product_card_item.dart';
+import 'package:flutter/material.dart';
+
+class CategoryGridListBuilder extends StatelessWidget {
+  const CategoryGridListBuilder({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverGrid.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 20,
+        crossAxisSpacing: 20,
+        childAspectRatio: 0.57,
+      ),
+      itemBuilder: (context, index) {
+        return const ProductCardItem();
+      },
+    );
+  }
+}
