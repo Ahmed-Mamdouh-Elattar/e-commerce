@@ -14,4 +14,6 @@ class PageName {
   static const String shopByCategory = '$home/$shopByCategoryPath';
   static const String categoryProductsPath = 'category-products';
   static const String categoryProducts = '$home/$categoryProductsPath';
+  static const String productPath = 'product';
+  static const String product = '$home/$productPath';
 }
