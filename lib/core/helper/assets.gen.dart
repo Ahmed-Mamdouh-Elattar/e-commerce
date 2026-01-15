@@ -83,6 +83,9 @@ class $AssetsImagesGen {
 class $AssetsSvgGen {
   const $AssetsSvgGen();
 
+  /// File path: assets/svg/arrow_down.svg
+  String get arrowDown => 'assets/svg/arrow_down.svg';
+
   /// File path: assets/svg/bag.svg
   String get bag => 'assets/svg/bag.svg';
 
@@ -99,7 +102,14 @@ class $AssetsSvgGen {
   String get search => 'assets/svg/search.svg';
 
   /// List of all assets
-  List<String> get values => [bag, notificationbing, person, receipt, search];
+  List<String> get values => [
+    arrowDown,
+    bag,
+    notificationbing,
+    person,
+    receipt,
+    search,
+  ];
 }
 
 class Assets {
