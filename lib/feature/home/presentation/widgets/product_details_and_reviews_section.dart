@@ -17,7 +17,7 @@ class ProductDetailsAndReviewsSection extends StatelessWidget {
         Text("Reviews", style: AppTextStyle.bold16),
         const SizedBox(height: 24),
         Text("4.5 Ratings", style: AppTextStyle.bold24),
-        const SizedBox(height: 24),
+        const SizedBox(height: 100),
       ],
     );
   }
