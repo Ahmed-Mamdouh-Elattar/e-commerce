@@ -1,4 +1,4 @@
-import 'package:e_commerce/bottom_nav_bar_main_wrapper.dart';
+import 'package:e_commerce/core/widgets/bottom_nav_bar_main_wrapper.dart';
 import 'package:e_commerce/core/providers/auth_state_change_provider/auth_state_change_provider.dart';
 import 'package:e_commerce/core/routing/page_name.dart';
 import 'package:e_commerce/core/routing/router_notifier.dart';
@@ -12,6 +12,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
   final routerNotifier = ref.watch(routerNotifierProvider);
+
   return GoRouter(
     refreshListenable: routerNotifier,
     redirect: (context, state) {
@@ -27,40 +28,37 @@ final appRouterProvider = Provider<GoRouter>((ref) {
 
       return null;
     },
-    routes: [
-      splashRoute,
-      signInRoute,
-      StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) =>
-            BottomNavBarMainWrapper(navigationShell: navigationShell),
-        branches: [
-          StatefulShellBranch(routes: [homeRoute]),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: '/Notification',
-                builder: (context, state) => const SizedBox(),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: '/Receipt',
-                builder: (context, state) => const SizedBox(),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: '/Profile',
-                builder: (context, state) => const SizedBox(),
-              ),
-            ],
-          ),
-        ],
-      ),
-    ],
+    routes: [splashRoute, signInRoute, statefulShellRoute],
   );
 });
+final statefulShellRoute = StatefulShellRoute.indexedStack(
+  builder: (context, state, navigationShell) =>
+      BottomNavBarMainWrapper(navigationShell: navigationShell),
+  branches: [
+    StatefulShellBranch(routes: [homeRoute]),
+    StatefulShellBranch(
+      routes: [
+        GoRoute(
+          path: '/Notification',
+          builder: (context, state) => const SizedBox(),
+        ),
+      ],
+    ),
+    StatefulShellBranch(
+      routes: [
+        GoRoute(
+          path: '/Receipt',
+          builder: (context, state) => const SizedBox(),
+        ),
+      ],
+    ),
+    StatefulShellBranch(
+      routes: [
+        GoRoute(
+          path: '/Profile',
+          builder: (context, state) => const SizedBox(),
+        ),
+      ],
+    ),
+  ],
+);
