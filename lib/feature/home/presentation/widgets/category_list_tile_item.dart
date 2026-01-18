@@ -14,7 +14,8 @@ class CategoryListTileItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () => context.push(PageName.categoryProducts, extra: category),
+      onTap: () async =>
+          await context.push(PageName.categoryProducts, extra: category),
       tileColor: context.isDarkMode ? AppColor.bgDark2 : AppColor.bgLight2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       contentPadding: const EdgeInsets.all(12),

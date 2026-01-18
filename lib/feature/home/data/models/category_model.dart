@@ -7,9 +7,9 @@ class CategoryModel {
 
   CategoryModel({required this.id, required this.name, required this.image});
   factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
-    id: json['id'] as String,
-    name: json['name'] as String,
-    image: json['image'] as String,
+    id: json['id'],
+    name: json['name'],
+    image: json['image_url'],
   );
   CategoryEntity toCategoryEntity() =>
       CategoryEntity(id: id, name: name, image: image);

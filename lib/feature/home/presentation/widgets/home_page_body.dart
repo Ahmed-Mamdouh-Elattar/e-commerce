@@ -31,8 +31,8 @@ class HomePageBody extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: kPadding),
                   child: Section(
                     sectionTitle: "Categories",
-                    onPressedSeeAll: () {
-                      context.push(PageName.shopByCategory);
+                    onPressedSeeAll: () async {
+                      await context.push(PageName.shopByCategory);
                     },
                   ),
                 ),

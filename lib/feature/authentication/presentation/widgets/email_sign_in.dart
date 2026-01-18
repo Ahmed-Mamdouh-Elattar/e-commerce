@@ -26,9 +26,9 @@ class EmailSignIn extends HookWidget {
           const SizedBox(height: 16),
           CustomElevetedButton(
             label: "Continue",
-            onPressed: () {
+            onPressed: () async {
               if (formKey.currentState!.validate()) {
-                context.push(
+                await context.push(
                   PageName.passwordSignIn,
                   extra: emailController.text,
                 );
@@ -40,8 +40,8 @@ class EmailSignIn extends HookWidget {
             children: [
               Text("Don't have an Account ?", style: AppTextStyle.medium12),
               TextButton(
-                onPressed: () {
-                  context.push(PageName.createAccount);
+                onPressed: () async {
+                  await context.push(PageName.createAccount);
                 },
                 child: Text("Create One", style: AppTextStyle.bold12),
               ),

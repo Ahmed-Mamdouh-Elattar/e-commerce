@@ -12,8 +12,8 @@ class ProductCardItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        context.push(PageName.product);
+      onTap: () async {
+        await context.push(PageName.product);
       },
       child: Container(
         decoration: BoxDecoration(
