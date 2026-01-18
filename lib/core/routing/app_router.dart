@@ -1,9 +1,11 @@
+import 'package:e_commerce/bottom_nav_bar_main_wrapper.dart';
 import 'package:e_commerce/core/providers/auth_state_change_provider/auth_state_change_provider.dart';
 import 'package:e_commerce/core/routing/page_name.dart';
 import 'package:e_commerce/core/routing/router_notifier.dart';
 import 'package:e_commerce/feature/authentication/presentation/routing/sign_in_route.dart';
 import 'package:e_commerce/feature/home/presentation/routing/home_route.dart';
 import 'package:e_commerce/feature/splash/presentation/routing/splash_route.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -25,6 +27,40 @@ final appRouterProvider = Provider<GoRouter>((ref) {
 
       return null;
     },
-    routes: [splashRoute, signInRoute, homeRoute],
+    routes: [
+      splashRoute,
+      signInRoute,
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) =>
+            BottomNavBarMainWrapper(navigationShell: navigationShell),
+        branches: [
+          StatefulShellBranch(routes: [homeRoute]),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/Notification',
+                builder: (context, state) => const SizedBox(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/Receipt',
+                builder: (context, state) => const SizedBox(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/Profile',
+                builder: (context, state) => const SizedBox(),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ],
   );
 });
