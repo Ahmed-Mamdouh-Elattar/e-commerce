@@ -42,4 +42,16 @@ class HomeRepoImpl implements HomeRepo {
     final products = await _homeRemoteDataSource.getNewInProducts();
     return products.map((e) => e.toProductEntity()).toList();
   }
+
+  @override
+  Future<List<ProductEntity>> getProductsByCategory(String categoryId) async {
+    final connectivityResult = await _connectivity.checkConnectivity();
+    if (connectivityResult.contains(ConnectivityResult.none)) {
+      throw Failure(message: 'No internet connection');
+    }
+    final products = await _homeRemoteDataSource.getProductsByCategory(
+      categoryId,
+    );
+    return products.map((e) => e.toProductEntity()).toList();
+  }
 }

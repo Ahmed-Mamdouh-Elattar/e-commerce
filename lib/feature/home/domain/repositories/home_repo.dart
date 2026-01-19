@@ -7,4 +7,6 @@ abstract class HomeRepo {
   Future<List<ProductEntity>> getTopSellingProducts();
 
   Future<List<ProductEntity>> getNewInProducts();
+
+  Future<List<ProductEntity>> getProductsByCategory(String categoryId);
 }
