@@ -4,10 +4,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
+    brightness: Brightness.light,
+    colorScheme: ColorScheme.fromSeed(
+      brightness: Brightness.light,
+      seedColor: AppColor.bgLight1,
+      surface: AppColor.bgLight1,
+      onSurface: Colors.black, // لون النص الأساسي
+      surfaceContainerHigh: AppColor.bgLight1,
+    ),
+    listTileTheme: const ListTileThemeData(tileColor: AppColor.bgLight2),
+
     useMaterial3: true,
     scaffoldBackgroundColor: AppColor.bgLight1,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColor.bgLight1,
+      surfaceTintColor: AppColor.bgLight1,
       centerTitle: true,
       shadowColor: Colors.transparent,
       elevation: 0,
@@ -30,6 +41,14 @@ class AppTheme {
   );
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
+    colorScheme: ColorScheme.fromSeed(
+      brightness: Brightness.dark,
+      seedColor: AppColor.bgDark1,
+      surface: AppColor.bgDark1,
+      onSurface: Colors.white, // لون النص الأساسي
+      surfaceContainerHigh: AppColor.bgDark1,
+    ),
+    listTileTheme: const ListTileThemeData(tileColor: AppColor.bgDark2),
     useMaterial3: true,
     scaffoldBackgroundColor: AppColor.bgDark1,
     appBarTheme: AppBarTheme(
