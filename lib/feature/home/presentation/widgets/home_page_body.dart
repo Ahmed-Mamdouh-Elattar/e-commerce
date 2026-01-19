@@ -2,6 +2,7 @@ import 'package:e_commerce/core/helper/constansts.dart';
 import 'package:e_commerce/core/routing/page_name.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/categories_section.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/home_appbar.dart';
+import 'package:e_commerce/feature/home/presentation/widgets/new_in_items_list.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/search_button.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/section.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/top_selling_items_list.dart';
@@ -63,7 +64,7 @@ class HomePageBody extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-                const TopSellingItemsList(),
+                const NewInItemsList(),
               ],
             ),
           ),
