@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/config/app_color.dart';
 import 'package:e_commerce/core/config/app_text_style.dart';
+import 'package:e_commerce/core/extensions/theme_extension.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
 import 'package:e_commerce/core/widgets/custom_cached_network_image.dart';
 import 'package:e_commerce/core/widgets/custom_eleveted_button.dart';
@@ -81,7 +82,16 @@ class FakeProductPageBodyContent extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 24),
-                  SizedBox(height: 248.h, width: double.infinity),
+                  Container(
+                    height: 248.h,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: context.isDarkMode
+                          ? AppColor.bgDark2
+                          : AppColor.bgLight2,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: kPadding),
                     child: Column(
