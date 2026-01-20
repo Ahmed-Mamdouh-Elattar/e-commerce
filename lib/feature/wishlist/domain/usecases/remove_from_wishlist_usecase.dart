@@ -6,7 +6,7 @@ class RemoveFromWishlistUsecase {
   final WishlistRepo _wishlistRepo;
   RemoveFromWishlistUsecase({required WishlistRepo wishlistRepo})
     : _wishlistRepo = wishlistRepo;
-  Future<void> execute(String productId) async {
+  Future<void> call(String productId) async {
     await _wishlistRepo.removeFromWishlist(productId);
   }
 }

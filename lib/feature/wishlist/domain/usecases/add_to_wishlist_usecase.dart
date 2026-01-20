@@ -6,7 +6,7 @@ class AddToWishlistUseCase {
   final WishlistRepo _wishlistRepo;
   AddToWishlistUseCase({required WishlistRepo wishlistRepo})
     : _wishlistRepo = wishlistRepo;
-  Future<void> execute(String productId) async {
+  Future<void> call(String productId) async {
     await _wishlistRepo.addToWishlist(productId);
   }
 }
