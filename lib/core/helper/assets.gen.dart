@@ -89,6 +89,12 @@ class $AssetsSvgGen {
   /// File path: assets/svg/bag.svg
   String get bag => 'assets/svg/bag.svg';
 
+  /// File path: assets/svg/balck_favorite.svg
+  String get balckFavorite => 'assets/svg/balck_favorite.svg';
+
+  /// File path: assets/svg/heart.svg
+  String get heart => 'assets/svg/heart.svg';
+
   /// File path: assets/svg/home.svg
   String get home => 'assets/svg/home.svg';
 
@@ -108,6 +114,8 @@ class $AssetsSvgGen {
   List<String> get values => [
     arrowDown,
     bag,
+    balckFavorite,
+    heart,
     home,
     notificationbing,
     person,
