@@ -38,16 +38,22 @@ class HomePageBody extends StatelessWidget {
             child: SizedBox(height: 80.h, child: const CategoriesSection()),
           ),
           const SizedBox(height: 24),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kPadding),
-            child: Section(sectionTitle: "Top Selling", onPressedSeeAll: () {}),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: kPadding),
+            child: Section(
+              sectionTitle: "Top Selling",
+              isSeeAllButtonVisible: false,
+            ),
           ),
           const SizedBox(height: 16),
           const TopSellingItemsList(),
           const SizedBox(height: 24),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kPadding),
-            child: Section(sectionTitle: "New In", onPressedSeeAll: () {}),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: kPadding),
+            child: Section(
+              sectionTitle: "New In",
+              isSeeAllButtonVisible: false,
+            ),
           ),
           const SizedBox(height: 16),
           const NewInItemsList(),

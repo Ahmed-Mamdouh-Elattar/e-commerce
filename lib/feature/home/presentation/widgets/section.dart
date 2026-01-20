@@ -3,16 +3,23 @@ import 'package:e_commerce/feature/home/presentation/widgets/see_all_text_button
 import 'package:flutter/material.dart';
 
 class Section extends StatelessWidget {
-  const Section({required this.sectionTitle, super.key, this.onPressedSeeAll});
+  const Section({
+    required this.sectionTitle,
+    super.key,
+    this.onPressedSeeAll,
+    this.isSeeAllButtonVisible = true,
+  });
   final String sectionTitle;
   final void Function()? onPressedSeeAll;
+  final bool isSeeAllButtonVisible;
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Text(sectionTitle, style: AppTextStyle.bold16),
         const Spacer(),
-        SeeAllTextButton(onPressed: onPressedSeeAll),
+        if (isSeeAllButtonVisible) SeeAllTextButton(onPressed: onPressedSeeAll),
       ],
     );
   }
