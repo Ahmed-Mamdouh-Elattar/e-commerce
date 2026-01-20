@@ -17,7 +17,7 @@ class ProductCardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        await context.push(PageName.product);
+        await context.push(PageName.product, extra: product.id);
       },
       child: Container(
         decoration: BoxDecoration(

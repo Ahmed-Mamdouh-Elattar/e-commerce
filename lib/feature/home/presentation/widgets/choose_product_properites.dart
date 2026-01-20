@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/config/app_text_style.dart';
-import 'package:e_commerce/feature/home/presentation/helper/product_color_ui.dart';
+import 'package:e_commerce/feature/home/domain/entities/product_entity.dart';
 import 'package:e_commerce/feature/home/presentation/helper/show_modal_bottom_sheet_to_choose_color.dart';
 import 'package:e_commerce/feature/home/presentation/helper/show_modal_bottom_sheet_to_choose_size.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/quantity_tile.dart';
@@ -9,14 +9,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'product_property_tile.dart';
 
 class ChooseProductPropertiesSection extends HookWidget {
-  const ChooseProductPropertiesSection({super.key});
-
+  const ChooseProductPropertiesSection({required this.product, super.key});
+  final ProductEntity product;
   @override
   Widget build(BuildContext context) {
-    final size = useState<String>("S");
-    final color = useState<ProductColorUi>(
-      const ProductColorUi("Orange", Colors.orange),
-    );
+    final size = useState<String>(product.sizes![0]);
+    final color = useState<ColorEntity>(product.colors![0]);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -24,7 +22,7 @@ class ChooseProductPropertiesSection extends HookWidget {
           title: "Size",
           valueChild: Text(size.value, style: AppTextStyle.bold16),
           onTap: () {
-            showModalBottomSheetToChooseSize(context, size);
+            showModalBottomSheetToChooseSize(context, size, product.sizes!);
           },
         ),
         const SizedBox(height: 16),
@@ -39,7 +37,7 @@ class ChooseProductPropertiesSection extends HookWidget {
             ),
           ),
           onTap: () {
-            showModalBottomSheetToChooseColor(context, color);
+            showModalBottomSheetToChooseColor(context, color, product.colors!);
           },
         ),
         const SizedBox(height: 12),

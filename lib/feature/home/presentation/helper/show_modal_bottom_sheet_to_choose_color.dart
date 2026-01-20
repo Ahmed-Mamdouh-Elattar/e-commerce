@@ -2,21 +2,15 @@ import 'package:e_commerce/core/config/app_color.dart';
 import 'package:e_commerce/core/config/app_text_style.dart';
 import 'package:e_commerce/core/extensions/theme_extension.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
-import 'package:e_commerce/feature/home/presentation/helper/product_color_ui.dart';
+import 'package:e_commerce/feature/home/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 Future<dynamic> showModalBottomSheetToChooseColor(
   BuildContext context,
-  ValueNotifier<ProductColorUi> selectedColor,
+  ValueNotifier<ColorEntity> selectedColor,
+  List<ColorEntity> colors,
 ) {
-  const List<ProductColorUi> kProductColors = [
-    ProductColorUi("Orange", Colors.orange),
-    ProductColorUi("Black", Colors.black),
-    ProductColorUi("Red", Colors.red),
-    ProductColorUi("Yellow", Colors.yellow),
-    ProductColorUi("Blue", Colors.blue),
-  ];
   return showModalBottomSheet(
     backgroundColor: context.isDarkMode ? AppColor.bgDark1 : AppColor.bgLight1,
     context: context,
@@ -45,9 +39,9 @@ Future<dynamic> showModalBottomSheetToChooseColor(
                 return const SizedBox(height: 16);
               },
               shrinkWrap: true,
-              itemCount: kProductColors.length,
+              itemCount: colors.length,
               itemBuilder: (context, index) {
-                final itemColor = kProductColors[index];
+                final itemColor = colors[index];
                 final isSelected = selectedColor.value.name == itemColor.name;
                 return ListTile(
                   onTap: () {

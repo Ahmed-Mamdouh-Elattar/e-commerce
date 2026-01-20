@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/routing/page_name.dart';
+import 'package:e_commerce/feature/home/domain/entities/category_entity.dart';
 import 'package:e_commerce/feature/home/presentation/pages/category_products_page.dart';
 import 'package:e_commerce/feature/home/presentation/pages/home_page.dart';
 import 'package:e_commerce/feature/home/presentation/pages/product_page.dart';
@@ -16,11 +17,12 @@ final homeRoute = GoRoute(
     GoRoute(
       path: PageName.categoryProductsPath,
       builder: (context, state) =>
-          CategoryProductsPage(categoryId: state.extra as String),
+          CategoryProductsPage(categoryEntity: state.extra as CategoryEntity),
     ),
     GoRoute(
       path: PageName.productPath,
-      builder: (context, state) => const ProductPage(),
+      builder: (context, state) =>
+          ProductPage(productId: state.extra as String),
     ),
   ],
 );

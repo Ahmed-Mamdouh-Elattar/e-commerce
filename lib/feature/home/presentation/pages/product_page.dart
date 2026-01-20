@@ -3,13 +3,13 @@ import 'package:e_commerce/feature/home/presentation/widgets/product_page_body.d
 import 'package:flutter/material.dart';
 
 class ProductPage extends StatelessWidget {
-  const ProductPage({super.key});
-
+  const ProductPage({required this.productId, super.key});
+  final String productId;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(leading: const BackIconButton()),
-      body: const ProductPageBody(),
+      body: ProductPageBody(productId: productId),
     );
   }
 }

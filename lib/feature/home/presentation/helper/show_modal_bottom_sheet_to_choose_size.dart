@@ -8,12 +8,12 @@ import 'package:go_router/go_router.dart';
 Future<dynamic> showModalBottomSheetToChooseSize(
   BuildContext context,
   ValueNotifier<String> size,
+  List<String> sizes,
 ) {
   return showModalBottomSheet(
     backgroundColor: context.isDarkMode ? AppColor.bgDark1 : AppColor.bgLight1,
     context: context,
     builder: (context) {
-      final sizes = ["S", "M", "L", "XL"];
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: kPadding),
         child: Column(
