@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 class ProductEntity {
   final String id;
   final String? categoryId;
@@ -6,7 +8,7 @@ class ProductEntity {
   final String? description;
   final String? images;
   final List<String>? sizes;
-  final List<String>? colors;
+  final List<ColorEntity>? colors;
   final bool? isTopSelling;
   final bool? isNewIn;
   final String? review;
@@ -24,4 +26,19 @@ class ProductEntity {
     this.isNewIn,
     this.review,
   });
+}
+
+class ColorEntity {
+  final String name;
+  final Color color;
+  ColorEntity({required this.name, required this.color});
+  factory ColorEntity.fromString(String colorString) {
+    final color = colorString.split(":");
+    final colorValue = Color(
+      int.parse(color[1].replaceAll("#", "ff"), radix: 16),
+    );
+    final name = color[0];
+
+    return ColorEntity(name: name, color: colorValue);
+  }
 }

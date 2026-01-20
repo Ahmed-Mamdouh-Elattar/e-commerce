@@ -80,7 +80,7 @@ class ProductModel {
       description: description,
       images: images,
       sizes: sizes,
-      colors: colors,
+      colors: colors?.map((e) => ColorEntity.fromString(e)).toList(),
       isTopSelling: isTopSelling,
       isNewIn: isNewIn,
       review: review,
