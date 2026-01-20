@@ -18,6 +18,9 @@ class BackIconButton extends StatelessWidget {
         child: const Icon(Icons.arrow_back_ios_new),
       ),
       onPressed: () {
+        if (Navigator.of(context).userGestureInProgress) {
+          return;
+        }
         if (context.mounted && GoRouter.of(context).canPop()) {
           context.pop();
         }

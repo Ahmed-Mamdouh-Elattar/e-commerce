@@ -3,8 +3,8 @@ import 'package:e_commerce/feature/home/presentation/widgets/product_card_item.d
 import 'package:flutter/material.dart';
 
 class CategoryGridListBuilder extends StatelessWidget {
-  const CategoryGridListBuilder({super.key});
-
+  const CategoryGridListBuilder({required this.products, super.key});
+  final List<ProductEntity> products;
   @override
   Widget build(BuildContext context) {
     return SliverGrid.builder(
@@ -14,8 +14,9 @@ class CategoryGridListBuilder extends StatelessWidget {
         crossAxisSpacing: 20,
         childAspectRatio: 0.57,
       ),
+      itemCount: products.length,
       itemBuilder: (context, index) {
-        return ProductCardItem(product: ProductEntity(id: ""));
+        return ProductCardItem(product: products[index]);
       },
     );
   }

@@ -29,7 +29,7 @@ class ProductCardItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Flexible(
+            Expanded(
               child: product.images != null
                   ? CustomCachedNetworkImage(imageUrl: product.images!)
                   : Image.asset(Assets.images.dummyProduct1.path),

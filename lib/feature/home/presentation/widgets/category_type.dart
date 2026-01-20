@@ -13,7 +13,7 @@ class CategoryType extends StatelessWidget {
     return Expanded(
       child: InkWell(
         onTap: () {
-          context.push(PageName.categoryProducts);
+          context.push(PageName.categoryProducts, extra: category.id);
         },
         child: Column(
           children: [

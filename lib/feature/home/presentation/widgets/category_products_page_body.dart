@@ -1,33 +1,77 @@
 import 'package:e_commerce/core/config/app_text_style.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
 import 'package:e_commerce/core/widgets/back_icon_button.dart';
+import 'package:e_commerce/feature/home/domain/entities/product_entity.dart';
+import 'package:e_commerce/feature/home/presentation/riverpod/get_products_by_category_provider/get_products_by_category_provider.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/category_grid_list_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
-class CategoryProductsPageBody extends StatelessWidget {
-  const CategoryProductsPageBody({super.key});
-
+class CategoryProductsPageBody extends ConsumerWidget {
+  const CategoryProductsPageBody({required this.categoryId, super.key});
+  final String categoryId;
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        AppBar(leading: const BackIconButton()),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kPadding),
-            child: CustomScrollView(
-              slivers: [
-                const SliverToBoxAdapter(child: SizedBox(height: 16)),
-                SliverToBoxAdapter(
-                  child: Text("Hoodies (240)", style: AppTextStyle.bold16),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final products = ref.watch(getProductsByCategoryProvider(categoryId));
+    return products.when(
+      data: (data) {
+        return Column(
+          children: [
+            AppBar(leading: const BackIconButton()),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: kPadding),
+                child: CustomScrollView(
+                  slivers: [
+                    const SliverToBoxAdapter(child: SizedBox(height: 16)),
+                    SliverToBoxAdapter(
+                      child: Text("Hoodies (240)", style: AppTextStyle.bold16),
+                    ),
+                    const SliverToBoxAdapter(child: SizedBox(height: 23)),
+                    CategoryGridListBuilder(products: data),
+                  ],
                 ),
-                const SliverToBoxAdapter(child: SizedBox(height: 23)),
-                const CategoryGridListBuilder(),
-              ],
+              ),
             ),
+          ],
+        );
+      },
+      error: (error, stackTrace) {
+        return Center(child: Text(error.toString()));
+      },
+      loading: () {
+        return Skeletonizer(
+          child: Column(
+            children: [
+              AppBar(leading: const BackIconButton()),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: kPadding),
+                  child: CustomScrollView(
+                    slivers: [
+                      const SliverToBoxAdapter(child: SizedBox(height: 16)),
+                      SliverToBoxAdapter(
+                        child: Text(
+                          "Hoodies (240)",
+                          style: AppTextStyle.bold16,
+                        ),
+                      ),
+                      const SliverToBoxAdapter(child: SizedBox(height: 23)),
+                      CategoryGridListBuilder(
+                        products: List.generate(
+                          5,
+                          (index) => ProductEntity(id: ""),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
-        ),
-      ],
+        );
+      },
     );
   }
 }

@@ -15,7 +15,8 @@ final homeRoute = GoRoute(
     ),
     GoRoute(
       path: PageName.categoryProductsPath,
-      builder: (context, state) => const CategoryProductsPage(),
+      builder: (context, state) =>
+          CategoryProductsPage(categoryId: state.extra as String),
     ),
     GoRoute(
       path: PageName.productPath,
