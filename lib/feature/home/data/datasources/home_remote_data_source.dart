@@ -10,6 +10,7 @@ abstract class HomeRemoteDataSource {
   Future<List<ProductModel>> getTopSellingProducts();
   Future<List<ProductModel>> getNewInProducts();
   Future<List<ProductModel>> getProductsByCategory(String categoryId);
+  Future<ProductModel> getProductById(String productId);
 }
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
@@ -67,6 +68,22 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
           .eq("category_id", categoryId);
       log(data.toString());
       return data.map((e) => ProductModel.fromJson(e)).toList();
+    } on PostgrestException catch (e) {
+      throw Failure(message: e.message);
+    } catch (e) {
+      throw Failure(message: e.toString());
+    }
+  }
+
+  @override
+  Future<ProductModel> getProductById(String productId) async {
+    try {
+      final data = await Supabase.instance.client
+          .from('products')
+          .select()
+          .eq("id", productId);
+      log(data.toString());
+      return ProductModel.fromJson(data.first);
     } on PostgrestException catch (e) {
       throw Failure(message: e.message);
     } catch (e) {
