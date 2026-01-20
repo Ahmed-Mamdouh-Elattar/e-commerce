@@ -1,7 +1,7 @@
 import 'package:e_commerce/core/error/failure_extension.dart';
 import 'package:e_commerce/feature/home/domain/entities/category_entity.dart';
 import 'package:e_commerce/feature/home/presentation/riverpod/get_categories_provider/get_categories_provider.dart';
-import 'package:e_commerce/feature/home/presentation/widgets/category_type.dart';
+import 'package:e_commerce/feature/home/presentation/widgets/home_page/category_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skeletonizer/skeletonizer.dart';

@@ -1,6 +1,6 @@
 import 'package:e_commerce/feature/home/domain/entities/category_entity.dart';
 import 'package:e_commerce/feature/home/presentation/riverpod/get_categories_provider/get_categories_provider.dart';
-import 'package:e_commerce/feature/home/presentation/widgets/category_list_tile_item.dart';
+import 'package:e_commerce/feature/home/presentation/widgets/shop_by_category_page/category_list_tile_item.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:skeletonizer/skeletonizer.dart';

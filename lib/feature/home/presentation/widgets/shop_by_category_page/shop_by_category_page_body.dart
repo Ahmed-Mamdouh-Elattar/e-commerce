@@ -1,6 +1,6 @@
 import 'package:e_commerce/core/config/app_text_style.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
-import 'package:e_commerce/feature/home/presentation/widgets/category_list_view.dart';
+import 'package:e_commerce/feature/home/presentation/widgets/shop_by_category_page/category_list_view.dart';
 import 'package:flutter/material.dart';
 
 class ShopByCategoryPageBody extends StatelessWidget {

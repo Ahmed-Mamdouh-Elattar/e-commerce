@@ -1,5 +1,5 @@
-import 'package:e_commerce/feature/home/presentation/widgets/home_appbar.dart';
-import 'package:e_commerce/feature/home/presentation/widgets/home_page_body.dart';
+import 'package:e_commerce/feature/home/presentation/widgets/home_page/home_appbar.dart';
+import 'package:e_commerce/feature/home/presentation/widgets/home_page/home_page_body.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {

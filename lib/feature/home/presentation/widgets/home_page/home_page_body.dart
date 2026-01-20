@@ -1,10 +1,10 @@
 import 'package:e_commerce/core/helper/constansts.dart';
 import 'package:e_commerce/core/routing/page_name.dart';
-import 'package:e_commerce/feature/home/presentation/widgets/categories_section.dart';
-import 'package:e_commerce/feature/home/presentation/widgets/new_in_items_list.dart';
-import 'package:e_commerce/feature/home/presentation/widgets/search_button.dart';
-import 'package:e_commerce/feature/home/presentation/widgets/section.dart';
-import 'package:e_commerce/feature/home/presentation/widgets/top_selling_items_list.dart';
+import 'package:e_commerce/feature/home/presentation/widgets/home_page/categories_section.dart';
+import 'package:e_commerce/feature/home/presentation/widgets/home_page/new_in_items_list.dart';
+import 'package:e_commerce/feature/home/presentation/widgets/home_page/search_button.dart';
+import 'package:e_commerce/feature/home/presentation/widgets/home_page/section.dart';
+import 'package:e_commerce/feature/home/presentation/widgets/home_page/top_selling_items_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';

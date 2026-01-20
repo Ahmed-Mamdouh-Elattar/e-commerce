@@ -1,5 +1,5 @@
 import 'package:e_commerce/feature/home/domain/entities/product_entity.dart';
-import 'package:e_commerce/feature/home/presentation/widgets/product_card_item.dart';
+import 'package:e_commerce/feature/home/presentation/widgets/shared/product_card_item.dart';
 import 'package:flutter/material.dart';
 
 class CategoryGridListBuilder extends StatelessWidget {
