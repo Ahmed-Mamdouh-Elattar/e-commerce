@@ -9,4 +9,5 @@ abstract class HomeRepo {
   Future<List<ProductEntity>> getNewInProducts();
 
   Future<List<ProductEntity>> getProductsByCategory(String categoryId);
+  Future<ProductEntity> getProductById(String productId);
 }
