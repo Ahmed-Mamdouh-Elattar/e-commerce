@@ -28,4 +28,13 @@ class WishlistRepoImpl implements WishlistRepo {
     }
     await _wishlistRemoteDataSource.removeFromWishlist(productId);
   }
+
+  @override
+  Future<List<String>> getWishlistProductIds() async {
+    final connectivityResult = await _connectivity.checkConnectivity();
+    if (connectivityResult.contains(ConnectivityResult.none)) {
+      throw Failure(message: "No internet connection");
+    }
+    return await _wishlistRemoteDataSource.getWishlistProductIds();
+  }
 }
