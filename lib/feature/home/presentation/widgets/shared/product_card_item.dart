@@ -49,7 +49,11 @@ class ProductCardItem extends StatelessWidget {
                 const SizedBox(height: 16),
               ],
             ),
-            Positioned(top: 4, right: 4, child: FavoriteIconButton()),
+            Positioned(
+              top: 4,
+              right: 4,
+              child: FavoriteIconButton(productId: product.id),
+            ),
           ],
         ),
       ),

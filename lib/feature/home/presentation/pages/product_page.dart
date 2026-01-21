@@ -11,9 +11,9 @@ class ProductPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const BackIconButton(),
-        actions: const [
-          FavoriteIconButtonWithCircleShape(),
-          SizedBox(width: 10),
+        actions: [
+          FavoriteIconButtonWithCircleShape(productId: productId),
+          const SizedBox(width: 10),
         ],
       ),
       body: ProductPageBody(productId: productId),
