@@ -12,8 +12,7 @@ part of 'search_provider.dart';
 @ProviderFor(Search)
 final searchProvider = SearchProvider._();
 
-final class SearchProvider
-    extends $AsyncNotifierProvider<Search, List<ProductEntity>> {
+final class SearchProvider extends $NotifierProvider<Search, SearchStates> {
   SearchProvider._()
     : super(
         from: null,
@@ -31,22 +30,29 @@ final class SearchProvider
   @$internal
   @override
   Search create() => Search();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(SearchStates value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<SearchStates>(value),
+    );
+  }
 }
 
-String _$searchHash() => r'8f85639dac71707fbb620719fef71b27a173c887';
+String _$searchHash() => r'ed2191eaa580a51fcceb16f3acaafedd045655d1';
 
-abstract class _$Search extends $AsyncNotifier<List<ProductEntity>> {
-  FutureOr<List<ProductEntity>> build();
+abstract class _$Search extends $Notifier<SearchStates> {
+  SearchStates build();
   @$mustCallSuper
   @override
   void runBuild() {
-    final ref =
-        this.ref as $Ref<AsyncValue<List<ProductEntity>>, List<ProductEntity>>;
+    final ref = this.ref as $Ref<SearchStates, SearchStates>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<AsyncValue<List<ProductEntity>>, List<ProductEntity>>,
-              AsyncValue<List<ProductEntity>>,
+              AnyNotifier<SearchStates, SearchStates>,
+              SearchStates,
               Object?,
               Object?
             >;
