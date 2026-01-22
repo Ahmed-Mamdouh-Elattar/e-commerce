@@ -2,7 +2,7 @@ import 'package:e_commerce/core/config/app_color.dart';
 import 'package:e_commerce/core/config/app_text_style.dart';
 import 'package:e_commerce/core/extensions/theme_extension.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
-import 'package:e_commerce/feature/home/domain/entities/product_entity.dart';
+import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

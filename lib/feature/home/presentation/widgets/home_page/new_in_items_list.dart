@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/helper/constansts.dart';
-import 'package:e_commerce/feature/home/domain/entities/product_entity.dart';
+import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/feature/home/presentation/riverpod/get_new_in_products_provider/get_new_in_products_provider.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/shared/product_card_item.dart';
 import 'package:flutter/material.dart';

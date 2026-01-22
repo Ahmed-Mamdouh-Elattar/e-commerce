@@ -4,7 +4,7 @@ import 'package:e_commerce/core/extensions/theme_extension.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
 import 'package:e_commerce/core/widgets/custom_cached_network_image.dart';
 import 'package:e_commerce/core/widgets/custom_eleveted_button.dart';
-import 'package:e_commerce/feature/home/domain/entities/product_entity.dart';
+import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/product_page/choose_product_properites.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/product_page/product_details_and_reviews_section.dart';
 import 'package:flutter/material.dart';

@@ -4,7 +4,7 @@ import 'package:e_commerce/core/extensions/theme_extension.dart';
 import 'package:e_commerce/core/helper/assets.gen.dart';
 import 'package:e_commerce/core/routing/page_name.dart';
 import 'package:e_commerce/core/widgets/custom_cached_network_image.dart';
-import 'package:e_commerce/feature/home/domain/entities/product_entity.dart';
+import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/feature/wishlist/presentation/widgets/favorite_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

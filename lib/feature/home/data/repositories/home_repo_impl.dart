@@ -2,7 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:e_commerce/core/error/failure.dart';
 import 'package:e_commerce/feature/home/data/datasources/home_remote_data_source.dart';
 import 'package:e_commerce/feature/home/domain/entities/category_entity.dart';
-import 'package:e_commerce/feature/home/domain/entities/product_entity.dart';
+import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/feature/home/domain/repositories/home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {

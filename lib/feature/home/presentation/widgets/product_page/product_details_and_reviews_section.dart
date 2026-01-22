@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/config/app_text_style.dart';
-import 'package:e_commerce/feature/home/domain/entities/product_entity.dart';
+import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetailsAndReviewsSection extends StatelessWidget {

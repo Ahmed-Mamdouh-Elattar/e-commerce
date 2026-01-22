@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/config/app_text_style.dart';
-import 'package:e_commerce/feature/home/domain/entities/product_entity.dart';
+import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/feature/home/presentation/helper/show_modal_bottom_sheet_to_choose_color.dart';
 import 'package:e_commerce/feature/home/presentation/helper/show_modal_bottom_sheet_to_choose_size.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/product_page/quantity_tile.dart';

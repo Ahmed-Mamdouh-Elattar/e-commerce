@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:e_commerce/core/error/failure.dart';
 import 'package:e_commerce/feature/home/data/models/category_model.dart';
-import 'package:e_commerce/feature/home/data/models/product_model.dart';
+import 'package:e_commerce/core/models/product_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class HomeRemoteDataSource {

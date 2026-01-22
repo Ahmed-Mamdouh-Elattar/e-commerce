@@ -1,7 +1,7 @@
 import 'package:e_commerce/core/config/app_text_style.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
 import 'package:e_commerce/feature/home/domain/entities/category_entity.dart';
-import 'package:e_commerce/feature/home/domain/entities/product_entity.dart';
+import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/feature/home/presentation/riverpod/get_products_by_category_provider/get_products_by_category_provider.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/category_products_page/category_grid_list_builder.dart';
 import 'package:flutter/material.dart';
