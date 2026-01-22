@@ -1,6 +1,6 @@
 import 'package:e_commerce/core/helper/constansts.dart';
-import 'package:e_commerce/core/widgets/shop_by_category_content.dart';
 import 'package:e_commerce/feature/search/presentation/widgets/search_page_app_bar.dart';
+import 'package:e_commerce/feature/search/presentation/widgets/search_page_body_content.dart';
 import 'package:flutter/material.dart';
 
 class SearchPageBody extends StatelessWidget {
@@ -11,11 +11,11 @@ class SearchPageBody extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.symmetric(horizontal: kPadding),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SearchPageAppBar(),
           SizedBox(height: 34),
-          ShopByCategoryContent(),
+
+          Expanded(child: SearchPageBodyContent()),
         ],
       ),
     );
