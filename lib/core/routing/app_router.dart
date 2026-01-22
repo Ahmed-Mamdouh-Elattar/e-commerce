@@ -29,14 +29,14 @@ final appRouterProvider = Provider<GoRouter>((ref) {
 
       return null;
     },
-    routes: [splashRoute, signInRoute, statefulShellRoute, searchRoute],
+    routes: [splashRoute, signInRoute, statefulShellRoute],
   );
 });
 final statefulShellRoute = StatefulShellRoute.indexedStack(
   builder: (context, state, navigationShell) =>
       BottomNavBarMainWrapper(navigationShell: navigationShell),
   branches: [
-    StatefulShellBranch(routes: [homeRoute]),
+    StatefulShellBranch(routes: [homeRoute, searchRoute]),
     StatefulShellBranch(
       routes: [
         GoRoute(

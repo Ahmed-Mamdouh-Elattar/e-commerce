@@ -53,6 +53,10 @@ class AppTextStyle {
     fontSize: 20.sp,
     fontWeight: FontWeight.w500,
   );
+  static TextStyle medium24 = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w500,
+  );
 
   // -------------------------
   // SemiBold
