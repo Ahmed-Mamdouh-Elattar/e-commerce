@@ -55,6 +55,9 @@ class $AssetsImagesGen {
   AssetGenImage get googleIcon =>
       const AssetGenImage('assets/images/google_icon.png');
 
+  /// File path: assets/images/search.png
+  AssetGenImage get search => const AssetGenImage('assets/images/search.png');
+
   /// File path: assets/images/splash_logo.png
   AssetGenImage get splashLogo =>
       const AssetGenImage('assets/images/splash_logo.png');
@@ -75,6 +78,7 @@ class $AssetsImagesGen {
     email,
     error,
     googleIcon,
+    search,
     splashLogo,
     success,
   ];
