@@ -2,8 +2,8 @@ import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/core/widgets/product_card_item.dart';
 import 'package:flutter/material.dart';
 
-class CategoryGridListBuilder extends StatelessWidget {
-  const CategoryGridListBuilder({required this.products, super.key});
+class ProductsGridList extends StatelessWidget {
+  const ProductsGridList({required this.products, super.key});
   final List<ProductEntity> products;
   @override
   Widget build(BuildContext context) {

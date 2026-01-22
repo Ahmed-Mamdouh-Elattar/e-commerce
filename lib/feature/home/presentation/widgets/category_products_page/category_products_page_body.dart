@@ -30,7 +30,7 @@ class CategoryProductsPageBody extends ConsumerWidget {
                 ),
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 23)),
-              CategoryGridListBuilder(products: data),
+              ProductsGridList(products: data),
             ],
           ),
         );
@@ -49,7 +49,7 @@ class CategoryProductsPageBody extends ConsumerWidget {
                   child: Text("Hoodies (240)", style: AppTextStyle.bold16),
                 ),
                 const SliverToBoxAdapter(child: SizedBox(height: 23)),
-                CategoryGridListBuilder(
+                ProductsGridList(
                   products: List.generate(5, (index) => ProductEntity(id: "")),
                 ),
               ],
