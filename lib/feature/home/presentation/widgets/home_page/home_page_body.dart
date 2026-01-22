@@ -2,7 +2,7 @@ import 'package:e_commerce/core/helper/constansts.dart';
 import 'package:e_commerce/core/routing/page_name.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/home_page/categories_section.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/home_page/new_in_items_list.dart';
-import 'package:e_commerce/feature/home/presentation/widgets/home_page/search_button.dart';
+import 'package:e_commerce/feature/search/presentation/widgets/search_button.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/home_page/section.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/home_page/top_selling_items_list.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,11 @@ class HomePageBody extends StatelessWidget {
           const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: kPadding),
-            child: SearchButton(onTap: () {}),
+            child: SearchButton(
+              onTap: () {
+                context.push(PageName.search);
+              },
+            ),
           ),
           const SizedBox(height: 24),
           Padding(
