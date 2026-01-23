@@ -4,6 +4,7 @@ import 'package:e_commerce/core/routing/page_name.dart';
 import 'package:e_commerce/core/routing/router_notifier.dart';
 import 'package:e_commerce/feature/authentication/presentation/routing/sign_in_route.dart';
 import 'package:e_commerce/feature/home/presentation/routing/home_route.dart';
+import 'package:e_commerce/feature/profile/presentation/routing/profile_route.dart';
 import 'package:e_commerce/feature/search/presentation/routing/search_route.dart';
 import 'package:e_commerce/feature/splash/presentation/routing/splash_route.dart';
 import 'package:flutter/material.dart';
@@ -53,13 +54,6 @@ final statefulShellRoute = StatefulShellRoute.indexedStack(
         ),
       ],
     ),
-    StatefulShellBranch(
-      routes: [
-        GoRoute(
-          path: '/Profile',
-          builder: (context, state) => const SizedBox(),
-        ),
-      ],
-    ),
+    StatefulShellBranch(routes: [profileRoute]),
   ],
 );

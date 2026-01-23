@@ -17,4 +17,5 @@ class PageName {
   static const String productPath = 'product';
   static const String product = '$home/$productPath';
   static const String search = '/search';
+  static const String profile = '/profile';
 }
