@@ -16,7 +16,10 @@ class ProductsGridList extends StatelessWidget {
       ),
       itemCount: products.length,
       itemBuilder: (context, index) {
-        return ProductCardItem(product: products[index]);
+        return ProductCardItem(
+          product: products[index],
+          key: ValueKey(products[index].id),
+        );
       },
     );
   }

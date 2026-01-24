@@ -74,7 +74,7 @@ class WishlistRemoteDataSourceImpl implements WishlistRemoteDataSource {
     try {
       final response = await Supabase.instance.client
           .from("products")
-          .select("id, name, price, images")
+          .select("id, title, price, images")
           .inFilter("id", productIds);
       return response.map((e) => ProductModel.fromJson(e)).toList();
     } on PostgrestException catch (e) {
