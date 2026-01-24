@@ -1,11 +1,13 @@
 import 'package:e_commerce/core/error/constants_error_messages.dart';
 import 'package:e_commerce/core/error/failure.dart';
+import 'package:e_commerce/core/models/product_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class WishlistRemoteDataSource {
   Future<void> addToWishlist(String productId);
   Future<void> removeFromWishlist(String productId);
   Future<List<String>> getWishlistProductIds();
+  Future<List<ProductModel>> getWishlistProducts(List<String> productIds);
 }
 
 class WishlistRemoteDataSourceImpl implements WishlistRemoteDataSource {
@@ -58,6 +60,23 @@ class WishlistRemoteDataSourceImpl implements WishlistRemoteDataSource {
           .select("product_id")
           .eq("user_id", userId);
       return response.map((e) => e["product_id"] as String).toList();
+    } on PostgrestException catch (e) {
+      throw Failure(message: e.message);
+    } catch (e) {
+      throw Failure(message: e.toString());
+    }
+  }
+
+  @override
+  Future<List<ProductModel>> getWishlistProducts(
+    List<String> productIds,
+  ) async {
+    try {
+      final response = await Supabase.instance.client
+          .from("products")
+          .select("id, name, price, images")
+          .inFilter("id", productIds);
+      return response.map((e) => ProductModel.fromJson(e)).toList();
     } on PostgrestException catch (e) {
       throw Failure(message: e.message);
     } catch (e) {
