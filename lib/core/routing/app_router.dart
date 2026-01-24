@@ -7,6 +7,7 @@ import 'package:e_commerce/feature/home/presentation/routing/home_route.dart';
 import 'package:e_commerce/feature/profile/presentation/routing/profile_route.dart';
 import 'package:e_commerce/feature/search/presentation/routing/search_route.dart';
 import 'package:e_commerce/feature/splash/presentation/routing/splash_route.dart';
+import 'package:e_commerce/feature/wishlist/presentation/routing/wishlist_route.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -54,6 +55,6 @@ final statefulShellRoute = StatefulShellRoute.indexedStack(
         ),
       ],
     ),
-    StatefulShellBranch(routes: [profileRoute]),
+    StatefulShellBranch(routes: [profileRoute, wishlistRoute]),
   ],
 );

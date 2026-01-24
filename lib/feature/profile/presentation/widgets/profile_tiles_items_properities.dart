@@ -1,5 +1,7 @@
+import 'package:e_commerce/core/routing/page_name.dart';
 import 'package:e_commerce/feature/profile/presentation/widgets/profile_tile_item.dart';
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileTileItemsProperities extends StatelessWidget {
   const ProfileTileItemsProperities({super.key});
@@ -10,7 +12,12 @@ class ProfileTileItemsProperities extends StatelessWidget {
       children: [
         ProfileTileItem(title: "Address", onTap: () {}),
         const SizedBox(height: 8),
-        ProfileTileItem(title: "Wishlist", onTap: () {}),
+        ProfileTileItem(
+          title: "Wishlist",
+          onTap: () {
+            context.push(PageName.wishlist);
+          },
+        ),
         const SizedBox(height: 8),
         ProfileTileItem(title: "Payment", onTap: () {}),
         const SizedBox(height: 8),
