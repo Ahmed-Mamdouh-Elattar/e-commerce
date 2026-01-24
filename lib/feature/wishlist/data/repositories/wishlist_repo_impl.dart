@@ -1,6 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/core/error/failure.dart';
-import 'package:e_commerce/core/models/product_model.dart';
 import 'package:e_commerce/feature/wishlist/data/datasources/wishlist_remote_data_source.dart';
 import 'package:e_commerce/feature/wishlist/domain/repositories/wishlist_repo.dart';
 
@@ -40,13 +40,16 @@ class WishlistRepoImpl implements WishlistRepo {
   }
 
   @override
-  Future<List<ProductModel>> getWishlistProducts(
+  Future<List<ProductEntity>> getWishlistProducts(
     List<String> productIds,
   ) async {
     final connectivityResult = await _connectivity.checkConnectivity();
     if (connectivityResult.contains(ConnectivityResult.none)) {
       throw Failure(message: "No internet connection");
     }
-    return await _wishlistRemoteDataSource.getWishlistProducts(productIds);
+    final productModels = await _wishlistRemoteDataSource.getWishlistProducts(
+      productIds,
+    );
+    return productModels.map((e) => e.toProductEntity()).toList();
   }
 }

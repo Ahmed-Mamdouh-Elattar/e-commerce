@@ -1,8 +1,8 @@
-import 'package:e_commerce/core/models/product_model.dart';
+import 'package:e_commerce/core/entities/product_entity.dart';
 
 abstract class WishlistRepo {
   Future<void> addToWishlist(String productId);
   Future<void> removeFromWishlist(String productId);
   Future<List<String>> getWishlistProductIds();
-  Future<List<ProductModel>> getWishlistProducts(List<String> productIds);
+  Future<List<ProductEntity>> getWishlistProducts(List<String> productIds);
 }
