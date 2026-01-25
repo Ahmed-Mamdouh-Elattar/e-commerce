@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:e_commerce/core/config/app_color.dart';
 import 'package:e_commerce/core/helper/assets.gen.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
@@ -7,6 +9,7 @@ import 'package:e_commerce/feature/profile/presentation/provider/get_user_data_p
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UpdateUserProfilePageBody extends HookConsumerWidget {
   const UpdateUserProfilePageBody({super.key});
@@ -14,6 +17,7 @@ class UpdateUserProfilePageBody extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userData = ref.watch(getUserDataProvider);
+    final pickedImage = useState<XFile?>(null);
     final nameController = useTextEditingController(text: userData.name);
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: kPadding),
@@ -27,7 +31,9 @@ class UpdateUserProfilePageBody extends HookConsumerWidget {
                 height: 100,
                 clipBehavior: Clip.hardEdge,
                 decoration: const BoxDecoration(shape: BoxShape.circle),
-                child: userData.image != null
+                child: pickedImage.value != null
+                    ? Image.file(File(pickedImage.value!.path))
+                    : userData.image != null
                     ? CustomCachedNetworkImage(imageUrl: userData.image!)
                     : Image.asset(Assets.images.profile.path),
               ),
@@ -36,7 +42,15 @@ class UpdateUserProfilePageBody extends HookConsumerWidget {
                 right: -10,
                 child: IconButton(
                   padding: EdgeInsets.zero,
-                  onPressed: () {},
+                  onPressed: () async {
+                    final ImagePicker picker = ImagePicker();
+                    final XFile? image = await picker.pickImage(
+                      source: ImageSource.gallery,
+                    );
+                    if (image != null) {
+                      pickedImage.value = image;
+                    }
+                  },
                   icon: Container(
                     width: 30,
                     height: 30,
