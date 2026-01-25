@@ -8,4 +8,5 @@ abstract class AuthRepo {
   Future<void> updateUser(UserAttributes userAttributes);
   Stream<AuthState> get authStateChange;
   Future<AuthResponse> signInWithGoogle();
+  Future<void> signOut();
 }
