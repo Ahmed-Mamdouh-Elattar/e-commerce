@@ -22,10 +22,7 @@ class AuthDataSourceImpl implements AuthDataSource {
       email: userModel.email,
       password: userModel.password,
       emailRedirectTo: kEmailSignUpRedirectUrl,
-      data: {
-        'first_name': userModel.firstName,
-        'last_name': userModel.lastName,
-      },
+      data: {'name': "${userModel.firstName} ${userModel.lastName}"},
     );
     return res;
   }
