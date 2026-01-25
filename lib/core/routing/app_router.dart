@@ -48,6 +48,8 @@ final statefulShellRoute = StatefulShellRoute.indexedStack(
         ),
       ],
     ),
-    StatefulShellBranch(routes: [profileRoute, wishlistRoute]),
+    StatefulShellBranch(
+      routes: [profileRoute, wishlistRoute, updateProfileRoute],
+    ),
   ],
 );

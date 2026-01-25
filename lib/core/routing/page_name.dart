@@ -19,4 +19,5 @@ class PageName {
   static const String search = '/search';
   static const String profile = '/profile';
   static const String wishlist = '$profile/wishlist';
+  static const String updateProfile = '$profile/update-profile';
 }
