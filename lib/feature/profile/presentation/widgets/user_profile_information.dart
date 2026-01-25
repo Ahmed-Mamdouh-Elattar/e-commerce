@@ -2,18 +2,29 @@ import 'package:e_commerce/core/config/app_color.dart';
 import 'package:e_commerce/core/config/app_text_style.dart';
 import 'package:e_commerce/core/extensions/theme_extension.dart';
 import 'package:e_commerce/core/helper/assets.gen.dart';
+import 'package:e_commerce/core/routing/page_name.dart';
+import 'package:e_commerce/core/widgets/custom_cached_network_image.dart';
+import 'package:e_commerce/feature/profile/presentation/provider/get_user_data_provider/get_user_data_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
-class UserProfileInformation extends StatelessWidget {
+class UserProfileInformation extends ConsumerWidget {
   const UserProfileInformation({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userData = ref.watch(getUserDataProvider);
     return Column(
       children: [
-        CircleAvatar(
-          radius: 50,
-          backgroundImage: AssetImage(Assets.images.profile.path),
+        Container(
+          width: 100,
+          height: 100,
+          clipBehavior: Clip.hardEdge,
+          decoration: const BoxDecoration(shape: BoxShape.circle),
+          child: userData.image != null
+              ? CustomCachedNetworkImage(imageUrl: userData.image!)
+              : Image.asset(Assets.images.profile.path),
         ),
         const SizedBox(height: 32),
         Container(
@@ -27,10 +38,10 @@ class UserProfileInformation extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Gilbert Jones', style: AppTextStyle.bold16),
+                  Text(userData.name ?? '', style: AppTextStyle.bold16),
                   const SizedBox(height: 8),
                   Text(
-                    'Glbertjones001@gmail.com',
+                    userData.email ?? '',
                     style: AppTextStyle.medium16.copyWith(
                       color: AppColor.black100.withValues(alpha: 0.5),
                     ),
@@ -39,7 +50,9 @@ class UserProfileInformation extends StatelessWidget {
               ),
               const Spacer(),
               TextButton(
-                onPressed: () {},
+                onPressed: () async {
+                  await context.push(PageName.updateProfile);
+                },
                 child: Text(
                   'Edit',
                   style: AppTextStyle.medium16.copyWith(
