@@ -12,6 +12,7 @@ abstract class AuthDataSource {
   Future<void> updateUser(UserAttributes userAttributes);
   Stream<AuthState> get authStateChange;
   Future<AuthResponse> signInWithGoogle();
+  Future<void> signOut();
 }
 
 class AuthDataSourceImpl implements AuthDataSource {
@@ -80,5 +81,10 @@ class AuthDataSourceImpl implements AuthDataSource {
       idToken: idToken,
     );
     return response;
+  }
+
+  @override
+  Future<void> signOut() {
+    return Supabase.instance.client.auth.signOut();
   }
 }
