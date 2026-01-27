@@ -4,6 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        minimumSize: const Size.fromHeight(50),
+        backgroundColor: AppColor.primary100,
+        foregroundColor: Colors.white,
+      ),
+    ),
     brightness: Brightness.light,
     colorScheme: ColorScheme.fromSeed(
       brightness: Brightness.light,
@@ -40,6 +47,13 @@ class AppTheme {
     ),
   );
   static ThemeData darkTheme = ThemeData(
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        minimumSize: const Size.fromHeight(50),
+        backgroundColor: AppColor.primary100,
+        foregroundColor: Colors.white,
+      ),
+    ),
     brightness: Brightness.dark,
     colorScheme: ColorScheme.fromSeed(
       brightness: Brightness.dark,
