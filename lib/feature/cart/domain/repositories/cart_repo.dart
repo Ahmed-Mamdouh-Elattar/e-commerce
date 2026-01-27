@@ -1,0 +1,5 @@
+import 'package:e_commerce/feature/cart/domain/entities/cart_entitity.dart';
+
+abstract class CartRepo {
+  Future<void> addToCart(CartEntity productCart);
+}
