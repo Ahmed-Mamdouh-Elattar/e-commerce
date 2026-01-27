@@ -1,7 +1,9 @@
 import 'package:e_commerce/core/config/app_color.dart';
 import 'package:e_commerce/core/helper/assets.gen.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
+import 'package:e_commerce/core/routing/page_name.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -22,13 +24,19 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
       actions: [
-        CircleAvatar(
-          radius: 20,
-          backgroundColor: AppColor.primary100,
-          child: VectorGraphic(
-            loader: AssetBytesLoader(Assets.svg.bag),
-            height: 20,
-            width: 20,
+        IconButton(
+          padding: EdgeInsets.zero,
+          onPressed: () async {
+            await context.push(PageName.cart);
+          },
+          icon: CircleAvatar(
+            radius: 20,
+            backgroundColor: AppColor.primary100,
+            child: VectorGraphic(
+              loader: AssetBytesLoader(Assets.svg.bag),
+              height: 20,
+              width: 20,
+            ),
           ),
         ),
       ],

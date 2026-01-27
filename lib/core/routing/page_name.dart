@@ -20,4 +20,5 @@ class PageName {
   static const String profile = '/profile';
   static const String wishlist = '$profile/wishlist';
   static const String updateProfile = '$profile/update-profile';
+  static const String cart = '$home/cart';
 }
