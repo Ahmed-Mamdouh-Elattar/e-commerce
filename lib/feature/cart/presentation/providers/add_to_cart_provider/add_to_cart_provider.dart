@@ -17,12 +17,16 @@ class AddToCart extends _$AddToCart {
       await ref.read(addToCartUseCaseProvider).call(productCart);
       state = const AddToCartStates.loaded();
       Future.delayed(const Duration(seconds: 2), () {
-        state = const AddToCartStates.initial();
+        if (ref.mounted) {
+          state = const AddToCartStates.initial();
+        }
       });
     } catch (e) {
       state = AddToCartStates.failure(e.toString());
       Future.delayed(const Duration(seconds: 2), () {
-        state = const AddToCartStates.initial();
+        if (ref.mounted) {
+          state = const AddToCartStates.initial();
+        }
       });
     }
   }

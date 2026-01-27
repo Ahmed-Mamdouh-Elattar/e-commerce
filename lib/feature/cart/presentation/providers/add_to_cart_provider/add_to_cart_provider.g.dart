@@ -41,7 +41,7 @@ final class AddToCartProvider
   }
 }
 
-String _$addToCartHash() => r'fdf4b7aab8e718c387431a60b6d721336fe40db7';
+String _$addToCartHash() => r'9f3f0f5008bab35499f505e603f357fa80ef0f67';
 
 abstract class _$AddToCart extends $Notifier<AddToCartStates> {
   AddToCartStates build();
