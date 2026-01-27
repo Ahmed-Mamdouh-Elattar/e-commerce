@@ -9,7 +9,16 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'product_property_tile.dart';
 
 class ChooseProductPropertiesSection extends HookWidget {
-  const ChooseProductPropertiesSection({required this.product, super.key});
+  const ChooseProductPropertiesSection({
+    required this.colorNotifier,
+    required this.quantity,
+    required this.sizeNotifier,
+    required this.product,
+    super.key,
+  });
+  final ValueNotifier<String> sizeNotifier;
+  final ValueNotifier<ColorEntity> colorNotifier;
+  final ValueNotifier<int> quantity;
   final ProductEntity product;
   @override
   Widget build(BuildContext context) {
@@ -22,7 +31,12 @@ class ChooseProductPropertiesSection extends HookWidget {
           title: "Size",
           valueChild: Text(size.value, style: AppTextStyle.bold16),
           onTap: () {
-            showModalBottomSheetToChooseSize(context, size, product.sizes!);
+            showModalBottomSheetToChooseSize(
+              context,
+              size,
+              product.sizes!,
+              sizeNotifier,
+            );
           },
         ),
         const SizedBox(height: 16),
@@ -37,11 +51,16 @@ class ChooseProductPropertiesSection extends HookWidget {
             ),
           ),
           onTap: () {
-            showModalBottomSheetToChooseColor(context, color, product.colors!);
+            showModalBottomSheetToChooseColor(
+              context,
+              color,
+              product.colors!,
+              colorNotifier,
+            );
           },
         ),
         const SizedBox(height: 12),
-        const QuantityTile(),
+        QuantityTile(quantity: quantity),
       ],
     );
   }

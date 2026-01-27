@@ -1,4 +1,5 @@
 import 'package:e_commerce/feature/home/presentation/riverpod/get_product_by_id_provider.dart/get_product_by_id_provider.dart';
+import 'package:e_commerce/feature/home/presentation/widgets/product_page/fake_product_page_body_content.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/product_page/product_page_body_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

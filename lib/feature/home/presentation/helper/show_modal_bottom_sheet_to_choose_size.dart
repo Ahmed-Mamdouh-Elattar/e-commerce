@@ -9,6 +9,7 @@ Future<dynamic> showModalBottomSheetToChooseSize(
   BuildContext context,
   ValueNotifier<String> size,
   List<String> sizes,
+  ValueNotifier<String> sizeNotifier,
 ) {
   return showModalBottomSheet(
     backgroundColor: context.isDarkMode ? AppColor.bgDark1 : AppColor.bgLight1,
@@ -43,6 +44,7 @@ Future<dynamic> showModalBottomSheetToChooseSize(
                 return ListTile(
                   onTap: () {
                     size.value = sizes[index];
+                    sizeNotifier.value = sizes[index];
                     context.pop();
                   },
                   trailing: size.value == sizes[index]

@@ -6,11 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class QuantityTile extends HookWidget {
-  const QuantityTile({super.key});
+  const QuantityTile({required this.quantity, super.key});
+  final ValueNotifier<int> quantity;
 
   @override
   Widget build(BuildContext context) {
-    final count = useState(1);
+    final count = useState(quantity.value);
     return ListTile(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(100)),
@@ -25,6 +26,7 @@ class QuantityTile extends HookWidget {
             onPressed: () {
               if (count.value > 1) {
                 count.value--;
+                quantity.value = count.value;
               }
             },
           ),
@@ -35,6 +37,7 @@ class QuantityTile extends HookWidget {
             icon: Icons.add,
             onPressed: () {
               count.value++;
+              quantity.value = count.value;
             },
           ),
         ],

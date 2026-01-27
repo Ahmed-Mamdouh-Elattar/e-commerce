@@ -10,6 +10,7 @@ Future<dynamic> showModalBottomSheetToChooseColor(
   BuildContext context,
   ValueNotifier<ColorEntity> selectedColor,
   List<ColorEntity> colors,
+  ValueNotifier<ColorEntity> selectedColorNotifier,
 ) {
   return showModalBottomSheet(
     backgroundColor: context.isDarkMode ? AppColor.bgDark1 : AppColor.bgLight1,
@@ -46,6 +47,7 @@ Future<dynamic> showModalBottomSheetToChooseColor(
                 return ListTile(
                   onTap: () {
                     selectedColor.value = itemColor;
+                    selectedColorNotifier.value = itemColor;
                     context.pop();
                   },
                   title: Text(
