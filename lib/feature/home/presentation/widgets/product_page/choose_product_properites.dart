@@ -1,41 +1,37 @@
 import 'package:e_commerce/core/config/app_text_style.dart';
-import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/feature/home/presentation/helper/show_modal_bottom_sheet_to_choose_color.dart';
 import 'package:e_commerce/feature/home/presentation/helper/show_modal_bottom_sheet_to_choose_size.dart';
+import 'package:e_commerce/feature/home/presentation/riverpod/get_product_by_id_provider.dart/get_product_by_id_provider.dart';
+import 'package:e_commerce/feature/home/presentation/riverpod/product_properities_selection_provider/product_properities_selection_provider.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/product_page/quantity_tile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/experimental/scope.dart';
 
 import 'product_property_tile.dart';
 
-class ChooseProductPropertiesSection extends HookWidget {
-  const ChooseProductPropertiesSection({
-    required this.colorNotifier,
-    required this.quantity,
-    required this.sizeNotifier,
-    required this.product,
-    super.key,
-  });
-  final ValueNotifier<String> sizeNotifier;
-  final ValueNotifier<ColorEntity> colorNotifier;
-  final ValueNotifier<int> quantity;
-  final ProductEntity product;
+@Dependencies([getProductById, ProductProperitiesSelection])
+class ChooseProductPropertiesSection extends ConsumerWidget {
+  const ChooseProductPropertiesSection({super.key});
   @override
-  Widget build(BuildContext context) {
-    final size = useState<String>(product.sizes![0]);
-    final color = useState<ColorEntity>(product.colors![0]);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final product = ref.watch(getProductByIdProvider);
+    final properitiesSelection = ref.watch(productProperitiesSelectionProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ProductPropertyTile(
           title: "Size",
-          valueChild: Text(size.value, style: AppTextStyle.bold16),
+          valueChild: Text(
+            properitiesSelection.size,
+            style: AppTextStyle.bold16,
+          ),
           onTap: () {
             showModalBottomSheetToChooseSize(
               context,
-              size,
-              product.sizes!,
-              sizeNotifier,
+              product.value!,
+              product.value!.sizes!,
+              ref,
             );
           },
         ),
@@ -46,21 +42,21 @@ class ChooseProductPropertiesSection extends HookWidget {
             width: 16,
             height: 16,
             decoration: BoxDecoration(
-              color: color.value.color,
+              color: properitiesSelection.color.color,
               shape: BoxShape.circle,
             ),
           ),
           onTap: () {
             showModalBottomSheetToChooseColor(
               context,
-              color,
-              product.colors!,
-              colorNotifier,
+              product.value!,
+              product.value!.colors!,
+              ref,
             );
           },
         ),
         const SizedBox(height: 12),
-        QuantityTile(quantity: quantity),
+        const QuantityTile(),
       ],
     );
   }

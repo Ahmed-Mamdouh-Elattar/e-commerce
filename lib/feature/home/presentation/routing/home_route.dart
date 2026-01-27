@@ -4,6 +4,8 @@ import 'package:e_commerce/feature/home/presentation/pages/category_products_pag
 import 'package:e_commerce/feature/home/presentation/pages/home_page.dart';
 import 'package:e_commerce/feature/home/presentation/pages/product_page.dart';
 import 'package:e_commerce/feature/home/presentation/pages/shop_by_category_page.dart';
+import 'package:e_commerce/feature/home/presentation/riverpod/get_product_by_id_provider.dart/get_product_by_id_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 final homeRoute = GoRoute(
@@ -21,8 +23,12 @@ final homeRoute = GoRoute(
     ),
     GoRoute(
       path: PageName.productPath,
-      builder: (context, state) =>
-          ProductPage(productId: state.extra as String),
+      builder: (context, state) => ProviderScope(
+        overrides: [
+          productIdProvider.overrideWith((ref) => state.extra as String),
+        ],
+        child: const ProductPage(),
+      ),
     ),
   ],
 );

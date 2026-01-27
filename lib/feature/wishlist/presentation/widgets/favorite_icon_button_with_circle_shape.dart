@@ -1,20 +1,22 @@
 import 'package:e_commerce/core/config/app_color.dart';
 import 'package:e_commerce/core/extensions/theme_extension.dart';
 import 'package:e_commerce/core/helper/assets.gen.dart';
+import 'package:e_commerce/feature/home/presentation/riverpod/get_product_by_id_provider.dart/get_product_by_id_provider.dart';
 import 'package:e_commerce/feature/wishlist/presentation/provider/add_or_remove_product_from_wishlist_provider/add_or_remove_product_from_wishlist_provider.dart';
 import 'package:e_commerce/feature/wishlist/presentation/provider/get_wishlist_product_id_provider/get_wishlist_product_ids_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/experimental/scope.dart';
 import 'package:vector_graphics/vector_graphics_compat.dart';
 
+@Dependencies([productId])
 class FavoriteIconButtonWithCircleShape extends HookConsumerWidget {
-  const FavoriteIconButtonWithCircleShape({required this.productId, super.key});
-
-  final String productId;
+  const FavoriteIconButtonWithCircleShape({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final productId = ref.watch(productIdProvider);
     final isActuallyFavorite = ref.watch(
       getWishlistProductIdsProvider.select(
         (value) => value.value?.contains(productId) ?? false,

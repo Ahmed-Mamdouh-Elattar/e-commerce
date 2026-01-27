@@ -1,16 +1,22 @@
 import 'package:e_commerce/core/config/app_color.dart';
 import 'package:e_commerce/core/config/app_text_style.dart';
+import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/core/extensions/theme_extension.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
+import 'package:e_commerce/feature/home/presentation/riverpod/product_properities_selection_provider/product_properities_selection_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/experimental/scope.dart';
 
+@Dependencies([ProductProperitiesSelection])
 Future<dynamic> showModalBottomSheetToChooseSize(
   BuildContext context,
-  ValueNotifier<String> size,
+  ProductEntity product,
   List<String> sizes,
-  ValueNotifier<String> sizeNotifier,
+  WidgetRef ref,
 ) {
+  final properitiesSelection = ref.read(productProperitiesSelectionProvider);
   return showModalBottomSheet(
     backgroundColor: context.isDarkMode ? AppColor.bgDark1 : AppColor.bgLight1,
     context: context,
@@ -43,14 +49,15 @@ Future<dynamic> showModalBottomSheetToChooseSize(
               itemBuilder: (context, index) {
                 return ListTile(
                   onTap: () {
-                    size.value = sizes[index];
-                    sizeNotifier.value = sizes[index];
+                    ref
+                        .read(productProperitiesSelectionProvider.notifier)
+                        .updateSize(sizes[index]);
                     context.pop();
                   },
-                  trailing: size.value == sizes[index]
+                  trailing: properitiesSelection.size == sizes[index]
                       ? const Icon(Icons.check, color: Colors.white)
                       : null,
-                  tileColor: size.value == sizes[index]
+                  tileColor: properitiesSelection.size == sizes[index]
                       ? AppColor.primary100
                       : context.isDarkMode
                       ? AppColor.bgDark2
@@ -58,7 +65,9 @@ Future<dynamic> showModalBottomSheetToChooseSize(
                   title: Text(
                     sizes[index],
                     style: AppTextStyle.medium16.copyWith(
-                      color: size.value == sizes[index] ? Colors.white : null,
+                      color: properitiesSelection.size == sizes[index]
+                          ? Colors.white
+                          : null,
                     ),
                   ),
                   shape: RoundedRectangleBorder(

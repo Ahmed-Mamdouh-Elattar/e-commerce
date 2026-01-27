@@ -3,15 +3,20 @@ import 'package:e_commerce/core/config/app_text_style.dart';
 import 'package:e_commerce/core/extensions/theme_extension.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
 import 'package:e_commerce/core/entities/product_entity.dart';
+import 'package:e_commerce/feature/home/presentation/riverpod/product_properities_selection_provider/product_properities_selection_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:riverpod_annotation/experimental/scope.dart';
 
+@Dependencies([ProductProperitiesSelection])
 Future<dynamic> showModalBottomSheetToChooseColor(
   BuildContext context,
-  ValueNotifier<ColorEntity> selectedColor,
+  ProductEntity product,
   List<ColorEntity> colors,
-  ValueNotifier<ColorEntity> selectedColorNotifier,
+  WidgetRef ref,
 ) {
+  final properitiesSelection = ref.read(productProperitiesSelectionProvider);
   return showModalBottomSheet(
     backgroundColor: context.isDarkMode ? AppColor.bgDark1 : AppColor.bgLight1,
     context: context,
@@ -43,11 +48,13 @@ Future<dynamic> showModalBottomSheetToChooseColor(
               itemCount: colors.length,
               itemBuilder: (context, index) {
                 final itemColor = colors[index];
-                final isSelected = selectedColor.value.name == itemColor.name;
+                final isSelected =
+                    properitiesSelection.color.name == itemColor.name;
                 return ListTile(
                   onTap: () {
-                    selectedColor.value = itemColor;
-                    selectedColorNotifier.value = itemColor;
+                    ref
+                        .read(productProperitiesSelectionProvider.notifier)
+                        .updateColor(itemColor);
                     context.pop();
                   },
                   title: Text(
@@ -65,7 +72,9 @@ Future<dynamic> showModalBottomSheetToChooseColor(
                         decoration: BoxDecoration(
                           color: itemColor.color,
                           shape: BoxShape.circle,
-                          border: selectedColor.value.color == itemColor.color
+                          border:
+                              properitiesSelection.color.color ==
+                                  itemColor.color
                               ? Border.all(color: Colors.white, width: 2)
                               : null,
                         ),
