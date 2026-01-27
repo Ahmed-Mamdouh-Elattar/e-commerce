@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:ui';
 
 class ProductEntity {
@@ -41,4 +42,16 @@ class ColorEntity {
 
     return ColorEntity(name: name, color: colorValue);
   }
+
+  @override
+  bool operator ==(covariant ColorEntity other) {
+    if (identical(this, other)) {
+      return true;
+    }
+
+    return other.name == name && other.color == color;
+  }
+
+  @override
+  int get hashCode => name.hashCode ^ color.hashCode;
 }
