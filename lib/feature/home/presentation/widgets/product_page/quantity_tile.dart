@@ -24,6 +24,8 @@ class QuantityTile extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           CustomIconShapeButton(
+            height: 40,
+            width: 40,
             icon: Icons.remove,
             onPressed: () {
               if (count.quantity > 1) {
@@ -37,6 +39,8 @@ class QuantityTile extends ConsumerWidget {
           Text(count.quantity.toString(), style: AppTextStyle.medium16),
           const SizedBox(width: 23),
           CustomIconShapeButton(
+            height: 40,
+            width: 40,
             icon: Icons.add,
             onPressed: () {
               ref
