@@ -1,4 +1,5 @@
-import 'package:e_commerce/feature/cart/presentation/widgets/empty_cart_page.dart';
+import 'package:e_commerce/core/helper/constansts.dart';
+import 'package:e_commerce/feature/cart/presentation/widgets/cart_page_body_content.dart';
 import 'package:flutter/material.dart';
 
 class CartPageBody extends StatelessWidget {
@@ -6,6 +7,9 @@ class CartPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const EmptyCartPage();
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: kPadding),
+      child: CartPageBodyContent(),
+    );
   }
 }
