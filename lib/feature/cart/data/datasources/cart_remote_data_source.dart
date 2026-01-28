@@ -5,6 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 abstract class CartRemoteDataSource {
   Future<void> addToCart(CartModel productCart);
   Future<List<CartModel>> getCartProducts();
+  Future<void> removeAllCartProducts();
 }
 
 class CartRemoteDataSourceImpl implements CartRemoteDataSource {
@@ -47,6 +48,24 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
   ''')
           .eq('user_id', user!.id);
       return response.map((e) => CartModel.fromMap(e)).toList();
+    } on PostgrestException catch (e) {
+      throw Failure(message: e.message);
+    } catch (e) {
+      throw Failure(message: e.toString());
+    }
+  }
+
+  @override
+  Future<void> removeAllCartProducts() async {
+    try {
+      final user = Supabase.instance.client.auth.currentUser;
+      if (user == null) {
+        throw Failure(message: "User is not authenticated");
+      }
+      await Supabase.instance.client
+          .from("cart")
+          .delete()
+          .eq("user_id", user.id);
     } on PostgrestException catch (e) {
       throw Failure(message: e.message);
     } catch (e) {
