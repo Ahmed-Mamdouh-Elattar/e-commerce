@@ -19,4 +19,14 @@ class CartRepoImpl implements CartRepo {
     final cartModel = CartModel.fromEntity(productCart);
     return await _remoteDataSource.addToCart(cartModel);
   }
+
+  @override
+  Future<List<CartEntity>> getCartProducts() async {
+    final connectivityResult = await _connectivity.checkConnectivity();
+    if (connectivityResult.contains(ConnectivityResult.none)) {
+      throw Failure(message: "No internet connection");
+    }
+    final cartModels = await _remoteDataSource.getCartProducts();
+    return cartModels.map((e) => e.toCartEntity()).toList();
+  }
 }
