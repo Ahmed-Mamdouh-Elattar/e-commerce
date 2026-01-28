@@ -1,7 +1,6 @@
-import 'package:e_commerce/core/config/app_text_style.dart';
-import 'package:e_commerce/core/extensions/theme_extension.dart';
 import 'package:e_commerce/core/widgets/custom_eleveted_button.dart';
 import 'package:e_commerce/feature/cart/presentation/widgets/cart_bill.dart';
+import 'package:e_commerce/feature/cart/presentation/widgets/remove_all_cart_products_button.dart';
 import 'package:e_commerce/feature/cart/presentation/widgets/sliver_list_cart_products_items_builder.dart';
 import 'package:flutter/material.dart';
 
@@ -12,29 +11,20 @@ class CartPageBodyContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned.fill(
+        const Positioned.fill(
           child: CustomScrollView(
             slivers: [
               SliverToBoxAdapter(
                 child: Align(
                   alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      textStyle: AppTextStyle.medium16,
-                      foregroundColor: context.isDarkMode
-                          ? Colors.white
-                          : Colors.black,
-                    ),
-                    child: const Text("Remove All", textAlign: TextAlign.right),
-                  ),
+                  child: RemoveAllCartProductsButton(),
                 ),
               ),
 
-              const SliverListCartProductsItemsBuilder(),
-              const SliverToBoxAdapter(child: SizedBox(height: 20)),
-              const SliverToBoxAdapter(child: CartBill()),
-              const SliverToBoxAdapter(child: SizedBox(height: 100)),
+              SliverListCartProductsItemsBuilder(),
+              SliverToBoxAdapter(child: SizedBox(height: 20)),
+              SliverToBoxAdapter(child: CartBill()),
+              SliverToBoxAdapter(child: SizedBox(height: 100)),
             ],
           ),
         ),
