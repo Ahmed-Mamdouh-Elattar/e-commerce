@@ -1,6 +1,7 @@
 import 'package:e_commerce/feature/cart/domain/entities/cart_entitity.dart';
 import 'package:e_commerce/feature/cart/domain/usecases/add_to_cart_usecase.dart';
 import 'package:e_commerce/feature/cart/presentation/providers/add_to_cart_provider/add_to_cart_states.dart';
+import 'package:e_commerce/feature/cart/presentation/providers/get_cart_products_provider/get_cart_products_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'add_to_cart_provider.g.dart';
 
@@ -21,6 +22,7 @@ class AddToCart extends _$AddToCart {
           state = const AddToCartStates.initial();
         }
       });
+      ref.invalidate(getCartProductsProvider);
     } catch (e) {
       state = AddToCartStates.failure(e.toString());
       Future.delayed(const Duration(seconds: 2), () {
