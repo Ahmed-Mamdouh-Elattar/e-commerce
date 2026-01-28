@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:e_commerce/core/entities/product_entity.dart';
 import 'package:e_commerce/core/helper/color_to_hex.dart';
+import 'package:e_commerce/core/models/product_model.dart';
 import 'package:e_commerce/feature/cart/domain/entities/cart_entitity.dart';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
@@ -11,6 +13,7 @@ class CartModel {
   final String? size;
   final String? color;
   final int? quantity;
+  ProductModel? product;
   CartModel({
     this.id,
     this.productId,
@@ -18,6 +21,7 @@ class CartModel {
     this.size,
     this.color,
     this.quantity,
+    this.product,
   });
 
   Map<String, dynamic> toMap() {
@@ -38,6 +42,7 @@ class CartModel {
       size: map['size'] as String,
       color: map['color'] as String,
       quantity: map['quantity'] as int,
+      product: ProductModel.fromJson(map['product'] as Map<String, dynamic>),
     );
   }
 
@@ -47,7 +52,7 @@ class CartModel {
       CartModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   factory CartModel.fromEntity(CartEntity entity) {
-    final color = "${entity.color.name}:#${colorToHex(entity.color.color)}";
+    final color = "${entity.color!.name}:#${colorToHex(entity.color!.color)}";
     return CartModel(
       productId: entity.productId,
       size: entity.size,
@@ -71,6 +76,16 @@ class CartModel {
       size: size ?? this.size,
       color: color ?? this.color,
       quantity: quantity ?? this.quantity,
+    );
+  }
+
+  CartEntity toCartEntity() {
+    return CartEntity(
+      productId: productId!,
+      size: size!,
+      color: ColorEntity.fromString(color!),
+      quantity: quantity!,
+      product: product!.toProductEntity(),
     );
   }
 }
