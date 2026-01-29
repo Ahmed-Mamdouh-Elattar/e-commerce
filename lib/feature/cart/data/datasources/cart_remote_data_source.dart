@@ -7,6 +7,7 @@ abstract class CartRemoteDataSource {
   Future<List<CartModel>> getCartProducts();
   Future<void> removeAllCartProducts();
   Future<void> updateCartProductQuantity(CartModel cartProduct);
+  Future<double> getCartTotalPrice();
 }
 
 class CartRemoteDataSourceImpl implements CartRemoteDataSource {
@@ -86,6 +87,25 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
           .from("cart")
           .update(cartProduct.toMap(isUpdate: true))
           .eq("id", cartProduct.id!);
+    } on PostgrestException catch (e) {
+      throw Failure(message: e.message);
+    } catch (e) {
+      throw Failure(message: e.toString());
+    }
+  }
+
+  @override
+  Future<double> getCartTotalPrice() async {
+    try {
+      final user = Supabase.instance.client.auth.currentUser;
+      if (user == null) {
+        throw Failure(message: "User is not authenticated");
+      }
+      final response = await Supabase.instance.client.rpc(
+        'get_cart_total',
+        params: {'p_user_id': user.id},
+      );
+      return (response as num).toDouble();
     } on PostgrestException catch (e) {
       throw Failure(message: e.message);
     } catch (e) {
