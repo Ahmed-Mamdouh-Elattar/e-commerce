@@ -9,7 +9,7 @@ class TakeUserAddressPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Addresses"),
+        title: const Text("Address"),
         leading: const BackIconButton(),
       ),
       body: const TakeUserAddressPageBody(),
