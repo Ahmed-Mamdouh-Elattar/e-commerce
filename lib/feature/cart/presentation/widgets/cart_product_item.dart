@@ -5,6 +5,7 @@ import 'package:e_commerce/core/widgets/custom_cached_network_image.dart';
 import 'package:e_commerce/feature/cart/domain/entities/cart_entitity.dart';
 import 'package:e_commerce/feature/cart/presentation/widgets/cart_product_item_attribute.dart';
 import 'package:e_commerce/feature/cart/presentation/widgets/cart_product_item_quantity.dart';
+import 'package:e_commerce/feature/cart/presentation/widgets/delete_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -65,7 +66,14 @@ class CartProductItem extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 8),
-                CartProductItemQuantity(cartProduct: cartProduct),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CartProductItemQuantity(cartProduct: cartProduct),
+                    const SizedBox(width: 16),
+                    DeleteIconButton(cartProductId: cartProduct.id!),
+                  ],
+                ),
               ],
             ),
           ),
