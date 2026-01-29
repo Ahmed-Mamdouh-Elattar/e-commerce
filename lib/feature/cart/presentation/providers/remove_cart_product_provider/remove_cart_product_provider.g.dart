@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'update_cart_product_quantity_provider.dart';
+part of 'remove_cart_product_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -9,34 +9,33 @@ part of 'update_cart_product_quantity_provider.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(UpdateCartProductQuantity)
-final updateCartProductQuantityProvider = UpdateCartProductQuantityProvider._();
+@ProviderFor(RemoveCartProduct)
+final removeCartProductProvider = RemoveCartProductProvider._();
 
-final class UpdateCartProductQuantityProvider
-    extends $AsyncNotifierProvider<UpdateCartProductQuantity, void> {
-  UpdateCartProductQuantityProvider._()
+final class RemoveCartProductProvider
+    extends $AsyncNotifierProvider<RemoveCartProduct, void> {
+  RemoveCartProductProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'updateCartProductQuantityProvider',
+        name: r'removeCartProductProvider',
         isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$updateCartProductQuantityHash();
+  String debugGetCreateSourceHash() => _$removeCartProductHash();
 
   @$internal
   @override
-  UpdateCartProductQuantity create() => UpdateCartProductQuantity();
+  RemoveCartProduct create() => RemoveCartProduct();
 }
 
-String _$updateCartProductQuantityHash() =>
-    r'e579e0be40c506b64d698ba1630ed1756d632dab';
+String _$removeCartProductHash() => r'1b37f3cb0476cc88d612ca09f4ee17598a04f1cc';
 
-abstract class _$UpdateCartProductQuantity extends $AsyncNotifier<void> {
+abstract class _$RemoveCartProduct extends $AsyncNotifier<void> {
   FutureOr<void> build();
   @$mustCallSuper
   @override
