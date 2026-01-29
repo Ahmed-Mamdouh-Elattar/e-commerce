@@ -24,7 +24,10 @@ class CartModel {
     this.product,
   });
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMap({bool isUpdate = false}) {
+    if (isUpdate) {
+      return <String, dynamic>{'quantity': quantity};
+    }
     return <String, dynamic>{
       'product_id': productId,
       'user_id': userId,
@@ -54,6 +57,7 @@ class CartModel {
   factory CartModel.fromEntity(CartEntity entity) {
     final color = "${entity.color!.name}:#${colorToHex(entity.color!.color)}";
     return CartModel(
+      id: entity.id,
       productId: entity.productId,
       size: entity.size,
       color: color,
@@ -81,6 +85,7 @@ class CartModel {
 
   CartEntity toCartEntity() {
     return CartEntity(
+      id: id,
       productId: productId!,
       size: size!,
       color: ColorEntity.fromString(color!),

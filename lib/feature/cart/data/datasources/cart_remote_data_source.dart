@@ -47,7 +47,8 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
       price
     ) 
   ''')
-          .eq('user_id', user!.id);
+          .eq('user_id', user!.id)
+          .order("created_at", ascending: false);
       return response.map((e) => CartModel.fromMap(e)).toList();
     } on PostgrestException catch (e) {
       throw Failure(message: e.message);
@@ -83,11 +84,8 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
       }
       await Supabase.instance.client
           .from("cart")
-          .update(cartProduct.toMap())
-          .eq("user_id", user.id)
-          .eq("product_id", cartProduct.productId!)
-          .eq("size", cartProduct.size!)
-          .eq("color", cartProduct.color!);
+          .update(cartProduct.toMap(isUpdate: true))
+          .eq("id", cartProduct.id!);
     } on PostgrestException catch (e) {
       throw Failure(message: e.message);
     } catch (e) {
