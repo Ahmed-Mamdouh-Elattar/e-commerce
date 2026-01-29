@@ -53,4 +53,13 @@ class CartRepoImpl implements CartRepo {
   Future<double> getCartTotalPrice() async {
     return _remoteDataSource.getCartTotalPrice();
   }
+
+  @override
+  Future<void> removeCartProduct(String cartProductId) async {
+    final connectivityResult = await _connectivity.checkConnectivity();
+    if (connectivityResult.contains(ConnectivityResult.none)) {
+      throw Failure(message: "No internet connection");
+    }
+    return _remoteDataSource.removeCartProduct(cartProductId);
+  }
 }

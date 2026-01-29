@@ -6,4 +6,5 @@ abstract class CartRepo {
   Future<void> removeAllCartProducts();
   Future<void> updateCartProductQuantity(CartEntity cartProduct);
   Future<double> getCartTotalPrice();
+  Future<void> removeCartProduct(String cartProductId);
 }
