@@ -1,8 +1,10 @@
+import 'package:e_commerce/core/routing/page_name.dart';
 import 'package:e_commerce/core/widgets/custom_eleveted_button.dart';
 import 'package:e_commerce/feature/cart/presentation/widgets/cart_bill.dart';
 import 'package:e_commerce/feature/cart/presentation/widgets/remove_all_cart_products_button.dart';
 import 'package:e_commerce/feature/cart/presentation/widgets/sliver_list_cart_products_items_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CartPageBodyContent extends StatelessWidget {
   const CartPageBodyContent({super.key});
@@ -32,7 +34,12 @@ class CartPageBodyContent extends StatelessWidget {
           bottom: 14,
           right: 0,
           left: 0,
-          child: CustomElevetedButton(label: "Checkout", onPressed: () {}),
+          child: CustomElevetedButton(
+            label: "Checkout",
+            onPressed: () {
+              context.push(PageName.takeUserAddress);
+            },
+          ),
         ),
       ],
     );
