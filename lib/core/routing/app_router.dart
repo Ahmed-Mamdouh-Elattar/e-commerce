@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/widgets/bottom_nav_bar_main_wrapper.dart';
 import 'package:e_commerce/core/routing/router_notifier.dart';
+import 'package:e_commerce/feature/address/presentation/routing/address_route.dart';
 import 'package:e_commerce/feature/authentication/presentation/routing/sign_in_route.dart';
 import 'package:e_commerce/feature/cart/presentation/routing/cart_route.dart';
 import 'package:e_commerce/feature/home/presentation/routing/home_route.dart';
@@ -25,7 +26,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
 
       return null;
     },
-    routes: [splashRoute, signInRoute, statefulShellRoute],
+    routes: [splashRoute, signInRoute, statefulShellRoute, addressRoute],
   );
 });
 final statefulShellRoute = StatefulShellRoute.indexedStack(
