@@ -50,6 +50,7 @@ dependencies:
   skeletonizer: ^2.1.2
   cached_network_image: ^3.4.1
   image_picker: ^1.2.1
+  phone_text_field: ^2.0.0
 
 dev_dependencies:
   flutter_test:
