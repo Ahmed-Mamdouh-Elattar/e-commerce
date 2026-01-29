@@ -15,9 +15,6 @@ class CartPageBody extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: kPadding),
       child: getCartProducts.when(
         data: (data) {
-          if (getCartProducts.isLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
           if (data.isEmpty) {
             return const EmptyCartPage();
           }
