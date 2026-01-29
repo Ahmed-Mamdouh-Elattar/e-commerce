@@ -48,4 +48,9 @@ class CartRepoImpl implements CartRepo {
     final cartModel = CartModel.fromEntity(cartProduct);
     return _remoteDataSource.updateCartProductQuantity(cartModel);
   }
+
+  @override
+  Future<double> getCartTotalPrice() async {
+    return _remoteDataSource.getCartTotalPrice();
+  }
 }
