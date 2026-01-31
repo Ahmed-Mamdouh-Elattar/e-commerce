@@ -1,5 +1,5 @@
-import 'package:e_commerce/core/services/gps_service.dart';
-import 'package:geocoding/geocoding.dart';
+import 'package:e_commerce/core/services/gps_service/gps_model.dart';
+import 'package:e_commerce/core/services/gps_service/gps_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'gps_provider.g.dart';
@@ -7,7 +7,7 @@ part 'gps_provider.g.dart';
 @riverpod
 class Gps extends _$Gps {
   @override
-  FutureOr<Placemark?> build() {
+  FutureOr<GpsModel?> build() {
     return null;
   }
 

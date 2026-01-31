@@ -12,7 +12,7 @@ part of 'gps_provider.dart';
 @ProviderFor(Gps)
 final gpsProvider = GpsProvider._();
 
-final class GpsProvider extends $AsyncNotifierProvider<Gps, Placemark?> {
+final class GpsProvider extends $AsyncNotifierProvider<Gps, GpsModel?> {
   GpsProvider._()
     : super(
         from: null,
@@ -32,19 +32,19 @@ final class GpsProvider extends $AsyncNotifierProvider<Gps, Placemark?> {
   Gps create() => Gps();
 }
 
-String _$gpsHash() => r'd3c96e2fd0571a1126102a202a0ca7e49b574e26';
+String _$gpsHash() => r'338eda09095577a4eaba0c4378bf6469d4515e7f';
 
-abstract class _$Gps extends $AsyncNotifier<Placemark?> {
-  FutureOr<Placemark?> build();
+abstract class _$Gps extends $AsyncNotifier<GpsModel?> {
+  FutureOr<GpsModel?> build();
   @$mustCallSuper
   @override
   void runBuild() {
-    final ref = this.ref as $Ref<AsyncValue<Placemark?>, Placemark?>;
+    final ref = this.ref as $Ref<AsyncValue<GpsModel?>, GpsModel?>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<AsyncValue<Placemark?>, Placemark?>,
-              AsyncValue<Placemark?>,
+              AnyNotifier<AsyncValue<GpsModel?>, GpsModel?>,
+              AsyncValue<GpsModel?>,
               Object?,
               Object?
             >;

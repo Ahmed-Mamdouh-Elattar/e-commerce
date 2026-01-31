@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/services/gps_service/gps_model.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:geocoding/geocoding.dart';
@@ -41,7 +42,7 @@ class GpsService {
     return true;
   }
 
-  Future<Placemark> getCurrentLocation() async {
+  Future<GpsModel> getCurrentLocation() async {
     Position position = await Geolocator.getCurrentPosition();
     setLocaleIdentifier("en");
     List<Placemark> placemarks = await placemarkFromCoordinates(
@@ -51,7 +52,7 @@ class GpsService {
 
     Placemark place = placemarks[0];
 
-    return place;
+    return GpsModel(position: position, place: place);
   }
 }
 
