@@ -10,7 +10,12 @@ class ProfileTileItemsProperities extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ProfileTileItem(title: "Address", onTap: () {}),
+        ProfileTileItem(
+          title: "Address",
+          onTap: () {
+            context.go(PageName.addresses);
+          },
+        ),
         const SizedBox(height: 8),
         ProfileTileItem(
           title: "Wishlist",
