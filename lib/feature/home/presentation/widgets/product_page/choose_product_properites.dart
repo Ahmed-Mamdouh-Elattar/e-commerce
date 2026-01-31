@@ -9,7 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/experimental/scope.dart';
 import 'product_property_tile.dart';
 
-@Dependencies([getProductById])
+@Dependencies([getProductById, ProductProperitiesSelection])
 class ChooseProductPropertiesSection extends ConsumerWidget {
   const ChooseProductPropertiesSection({super.key});
   @override

@@ -7,7 +7,9 @@ import 'package:e_commerce/feature/home/presentation/riverpod/product_properitie
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/experimental/scope.dart';
 
+@Dependencies([ProductProperitiesSelection])
 Future<dynamic> showModalBottomSheetToChooseSize(
   BuildContext context,
   ProductEntity product,

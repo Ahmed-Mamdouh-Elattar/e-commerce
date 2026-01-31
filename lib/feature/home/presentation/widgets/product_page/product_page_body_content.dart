@@ -2,6 +2,7 @@ import 'package:e_commerce/core/helper/constansts.dart';
 import 'package:e_commerce/core/widgets/custom_cached_network_image.dart';
 import 'package:e_commerce/feature/cart/presentation/widgets/add_to_bag_button.dart';
 import 'package:e_commerce/feature/home/presentation/riverpod/get_product_by_id_provider.dart/get_product_by_id_provider.dart';
+import 'package:e_commerce/feature/home/presentation/riverpod/product_properities_selection_provider/product_properities_selection_provider.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/product_page/choose_product_properites.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/product_page/product_details_and_reviews_section.dart';
 import 'package:e_commerce/feature/home/presentation/widgets/product_page/product_title_and_price.dart';
@@ -10,7 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:riverpod_annotation/experimental/scope.dart';
 
-@Dependencies([getProductById])
+@Dependencies([getProductById, ProductProperitiesSelection])
 class ProductPageBodyContent extends ConsumerWidget {
   const ProductPageBodyContent({super.key});
   @override
