@@ -7,10 +7,9 @@ import 'package:e_commerce/feature/home/presentation/widgets/product_page/quanti
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/experimental/scope.dart';
-
 import 'product_property_tile.dart';
 
-@Dependencies([getProductById, ProductProperitiesSelection])
+@Dependencies([getProductById])
 class ChooseProductPropertiesSection extends ConsumerWidget {
   const ChooseProductPropertiesSection({super.key});
   @override

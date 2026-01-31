@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/experimental/scope.dart';
 
-@Dependencies([getProductById, ProductProperitiesSelection])
+@Dependencies([getProductById])
 class AddToBagButton extends ConsumerWidget {
   const AddToBagButton({super.key});
 

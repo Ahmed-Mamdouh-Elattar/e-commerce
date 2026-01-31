@@ -5,9 +5,7 @@ import 'package:e_commerce/core/widgets/custom_icon_shape_button.dart';
 import 'package:e_commerce/feature/home/presentation/riverpod/product_properities_selection_provider/product_properities_selection_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_annotation/experimental/scope.dart';
 
-@Dependencies([ProductProperitiesSelection])
 class QuantityTile extends ConsumerWidget {
   const QuantityTile({super.key});
 
