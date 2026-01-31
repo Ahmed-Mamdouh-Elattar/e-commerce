@@ -17,7 +17,7 @@ class CityAndStateInputsFields extends StatelessWidget {
             controller: cityController,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return "Please enter your city";
+                return "City is Required";
               }
               return null;
             },
@@ -30,7 +30,7 @@ class CityAndStateInputsFields extends StatelessWidget {
             controller: stateController,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return "Please enter your state";
+                return "State is Required";
               }
               return null;
             },

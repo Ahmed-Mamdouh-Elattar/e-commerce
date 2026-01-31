@@ -18,7 +18,7 @@ class BuildingAndFloorInputsFields extends StatelessWidget {
             controller: buildingController,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return "Please enter your building";
+                return "Building is Required";
               }
               return null;
             },
@@ -31,7 +31,7 @@ class BuildingAndFloorInputsFields extends StatelessWidget {
             controller: floorController,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return "Please enter your floor number";
+                return "Floor is Required";
               }
               return null;
             },
