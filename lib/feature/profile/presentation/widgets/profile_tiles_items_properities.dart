@@ -12,8 +12,8 @@ class ProfileTileItemsProperities extends StatelessWidget {
       children: [
         ProfileTileItem(
           title: "Address",
-          onTap: () {
-            context.go(PageName.addresses);
+          onTap: () async {
+            await context.push(PageName.addresses);
           },
         ),
         const SizedBox(height: 8),
