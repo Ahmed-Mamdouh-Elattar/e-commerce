@@ -2,4 +2,5 @@ import 'package:e_commerce/feature/address/domain/entities/user_address_entity.d
 
 abstract class AddressRepo {
   Future<void> addAddress(UserAddressEntity address);
+  Future<List<UserAddressEntity>> getAddresses();
 }

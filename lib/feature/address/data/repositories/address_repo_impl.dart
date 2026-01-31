@@ -22,4 +22,14 @@ class AddressRepoImpl implements AddressRepo {
     }
     await _remoteDataSource.addAddress(UserAddressModel.fromEntity(address));
   }
+
+  @override
+  Future<List<UserAddressEntity>> getAddresses() async {
+    final connectivityResult = await _connectivity.checkConnectivity();
+    if (connectivityResult.contains(ConnectivityResult.none)) {
+      throw Failure(message: 'No internet connection');
+    }
+    final addresses = await _remoteDataSource.getAddresses();
+    return addresses.map((e) => e.toUserAddressEntity()).toList();
+  }
 }
