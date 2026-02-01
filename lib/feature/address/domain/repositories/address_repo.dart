@@ -4,4 +4,5 @@ abstract class AddressRepo {
   Future<void> addAddress(UserAddressEntity address);
   Future<List<UserAddressEntity>> getAddresses();
   Future<void> deleteAddress(String id);
+  Future<void> changeDefaultAddress(String id);
 }
