@@ -62,6 +62,7 @@ class TakeUserAddressPageBody extends HookConsumerWidget {
       next.when(
         data: (data) {
           context.pop();
+          context.pop();
           showMessageDialog(
             context,
             message: "Address added successfully",

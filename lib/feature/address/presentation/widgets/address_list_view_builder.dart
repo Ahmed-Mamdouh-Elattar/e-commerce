@@ -1,59 +1,70 @@
-import 'package:e_commerce/core/config/app_color.dart';
-import 'package:e_commerce/core/config/app_text_style.dart';
+import 'package:e_commerce/core/helper/assets.gen.dart';
+import 'package:e_commerce/core/helper/show_custom_dialogs.dart';
+import 'package:e_commerce/feature/address/presentation/providers/change_default_address_provider.dart/change_default_address_provider.dart';
 import 'package:e_commerce/feature/address/presentation/providers/get_user_addresses_provider/get_user_addresses_provider.dart';
 import 'package:e_commerce/feature/address/presentation/widgets/address_card_item.dart';
-import 'package:e_commerce/feature/address/presentation/widgets/fake_address_card_item.dart';
+import 'package:e_commerce/feature/address/presentation/widgets/empty_addresses.dart';
+import 'package:e_commerce/feature/address/presentation/widgets/skeleton_addresses_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
-class AddressListViewBuilder extends ConsumerWidget {
+class AddressListViewBuilder extends HookConsumerWidget {
   const AddressListViewBuilder({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final addresses = ref.watch(getUserAddressesProvider);
-    return addresses.when(
+    final selectedId = useState<String?>(null);
+
+    ref.listen(changeDefaultAddressProvider, (previous, next) {
+      next.whenOrNull(
+        error: (error, _) {
+          selectedId.value = null;
+          showMessageDialog(
+            context,
+            message: error.toString(),
+            image: Assets.images.error.path,
+          );
+        },
+      );
+    });
+    ref.listen(getUserAddressesProvider, (previous, next) {
+      next.whenOrNull(data: (_) => selectedId.value = null);
+    });
+    final addressesAsync = ref.watch(getUserAddressesProvider);
+
+    return addressesAsync.when(
       data: (data) {
         if (data.isEmpty) {
-          return SliverFillRemaining(
-            hasScrollBody: false,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(
-                  Icons.location_on,
-                  size: 80,
-                  color: AppColor.primary100,
-                ),
-                const SizedBox(height: 20),
-                Text('No addresses found', style: AppTextStyle.medium20),
-              ],
-            ),
-          );
+          return const EmptyAddresses();
         }
+
         return SliverList.separated(
-          itemBuilder: (context, index) =>
-              AddressCardItem(address: data[index]),
           itemCount: data.length,
-          separatorBuilder: (context, index) => const SizedBox(height: 10),
+          separatorBuilder: (_, _) => const SizedBox(height: 10),
+          itemBuilder: (context, index) {
+            final address = data[index];
+
+            final isCurrentlyDefault = selectedId.value == null
+                ? address.isDefault
+                : selectedId.value == address.id;
+
+            return AddressCardItem(
+              address: address,
+              isDefault: isCurrentlyDefault!,
+              onTap: () {
+                selectedId.value = address.id;
+                ref
+                    .read(changeDefaultAddressProvider.notifier)
+                    .changeDefaultAddress(address.id!);
+              },
+            );
+          },
         );
       },
-      error: (error, stackTrace) {
-        return SliverFillRemaining(
-          hasScrollBody: false,
-          child: Center(child: Text(error.toString())),
-        );
-      },
-      loading: () {
-        return Skeletonizer.sliver(
-          child: SliverList.separated(
-            itemBuilder: (context, index) => const FakeAddressCardItem(),
-            itemCount: 5,
-            separatorBuilder: (context, index) => const SizedBox(height: 10),
-          ),
-        );
-      },
+      loading: () => const SkeletonAddressesList(),
+      error: (error, _) =>
+          SliverFillRemaining(child: Center(child: Text(error.toString()))),
     );
   }
 }
