@@ -15,6 +15,8 @@ class EmptyAddresses extends StatelessWidget {
           const Icon(Icons.location_on, size: 80, color: AppColor.primary100),
           const SizedBox(height: 20),
           Text('No addresses found', style: AppTextStyle.medium20),
+          const SizedBox(height: 8),
+          Text("Please add an address", style: AppTextStyle.regular16),
         ],
       ),
     );

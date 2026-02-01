@@ -1,12 +1,14 @@
 import 'package:e_commerce/core/helper/assets.gen.dart';
 import 'package:e_commerce/core/helper/show_custom_dialogs.dart';
 import 'package:e_commerce/feature/address/presentation/providers/change_default_address_provider.dart/change_default_address_provider.dart';
+import 'package:e_commerce/feature/address/presentation/providers/delete_address__provider/delete_address_provider.dart';
 import 'package:e_commerce/feature/address/presentation/providers/get_user_addresses_provider/get_user_addresses_provider.dart';
 import 'package:e_commerce/feature/address/presentation/widgets/address_card_item.dart';
 import 'package:e_commerce/feature/address/presentation/widgets/empty_addresses.dart';
 import 'package:e_commerce/feature/address/presentation/widgets/skeleton_addresses_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AddressListViewBuilder extends HookConsumerWidget {
@@ -15,7 +17,25 @@ class AddressListViewBuilder extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedId = useState<String?>(null);
-
+    ref.listen(deleteAddressProviderProvider, (previous, next) {
+      next.when(
+        data: (data) {
+          context.pop();
+        },
+        error: (error, stackTrace) {
+          context.pop();
+          showMessageDialog(
+            context,
+            message: error.toString(),
+            image: Assets.images.error.path,
+          );
+        },
+        loading: () {
+          context.pop();
+          showLoadingDialog(context);
+        },
+      );
+    });
     ref.listen(changeDefaultAddressProvider, (previous, next) {
       next.whenOrNull(
         error: (error, _) {

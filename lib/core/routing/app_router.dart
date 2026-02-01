@@ -26,7 +26,13 @@ final appRouterProvider = Provider<GoRouter>((ref) {
 
       return null;
     },
-    routes: [splashRoute, signInRoute, statefulShellRoute, addressRoute],
+    routes: [
+      splashRoute,
+      signInRoute,
+      statefulShellRoute,
+      addressRoute,
+      chooseAddressRoute,
+    ],
   );
 });
 final statefulShellRoute = StatefulShellRoute.indexedStack(

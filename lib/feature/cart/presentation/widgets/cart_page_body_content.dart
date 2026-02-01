@@ -37,7 +37,7 @@ class CartPageBodyContent extends StatelessWidget {
           child: CustomElevetedButton(
             label: "Checkout",
             onPressed: () {
-              context.push(PageName.takeUserAddress);
+              context.push(PageName.chooseAddress);
             },
           ),
         ),

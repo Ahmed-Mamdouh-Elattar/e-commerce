@@ -23,4 +23,5 @@ class PageName {
   static const String cart = '$home/cart';
   static const String takeUserAddress = '/take-user-address';
   static const String addresses = '/addresses';
+  static const String chooseAddress = '/choose-address';
 }

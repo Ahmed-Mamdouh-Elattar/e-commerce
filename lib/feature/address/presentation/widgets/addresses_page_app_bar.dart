@@ -1,9 +1,9 @@
 import 'package:e_commerce/core/widgets/back_icon_button.dart';
 import 'package:flutter/material.dart';
 
-class AddressesPageAppBaer extends StatelessWidget
+class AddressesPageAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const AddressesPageAppBaer({super.key});
+  const AddressesPageAppBar({super.key});
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);

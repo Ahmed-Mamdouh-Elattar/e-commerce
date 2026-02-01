@@ -11,7 +11,7 @@ class AddressesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AddressesPageAppBaer(),
+      appBar: const AddressesPageAppBar(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColor.primary100,
         onPressed: () async {
