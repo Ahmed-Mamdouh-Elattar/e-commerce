@@ -32,4 +32,13 @@ class AddressRepoImpl implements AddressRepo {
     final addresses = await _remoteDataSource.getAddresses();
     return addresses.map((e) => e.toUserAddressEntity()).toList();
   }
+
+  @override
+  Future<void> deleteAddress(String id) async {
+    final connectivityResult = await _connectivity.checkConnectivity();
+    if (connectivityResult.contains(ConnectivityResult.none)) {
+      throw Failure(message: 'No internet connection');
+    }
+    await _remoteDataSource.deleteAddress(id);
+  }
 }
