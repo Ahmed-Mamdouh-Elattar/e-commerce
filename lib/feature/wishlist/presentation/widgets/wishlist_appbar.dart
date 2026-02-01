@@ -15,27 +15,28 @@ class WishlistAppBar extends ConsumerWidget {
       pinned: true,
       leading: const BackIconButton(),
       title: Text("My Favorites (${wishlistProducts.value?.length})"),
-      bottom: wishlistProducts.isReloading
-          ? PreferredSize(
-              preferredSize: const Size.fromHeight(32),
-              child: Center(
-                child: Column(
-                  children: [
-                    LinearProgressIndicator(
-                      color: AppColor.primary100,
-                      backgroundColor: context.isDarkMode
-                          ? AppColor.bgDark2
-                          : AppColor.bgLight2,
-                    ),
-                    const SizedBox(height: 16),
-                  ],
+      bottom: PreferredSize(
+        preferredSize: const Size.fromHeight(32),
+        child: Visibility(
+          visible: wishlistProducts.isLoading,
+          maintainSize: true,
+          maintainState: true,
+          maintainAnimation: true,
+          child: Center(
+            child: Column(
+              children: [
+                LinearProgressIndicator(
+                  color: AppColor.primary100,
+                  backgroundColor: context.isDarkMode
+                      ? AppColor.bgDark2
+                      : AppColor.bgLight2,
                 ),
-              ),
-            )
-          : const PreferredSize(
-              preferredSize: Size.fromHeight(32),
-              child: SizedBox(),
+                const SizedBox(height: 16),
+              ],
             ),
+          ),
+        ),
+      ),
     );
   }
 }
