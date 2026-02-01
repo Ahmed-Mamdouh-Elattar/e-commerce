@@ -5,6 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 abstract class AddressRemoteDataSource {
   Future<void> addAddress(UserAddressModel address);
   Future<List<UserAddressModel>> getAddresses();
+  Future<void> deleteAddress(String id);
 }
 
 class AddressRemoteDataSourceImpl implements AddressRemoteDataSource {
@@ -37,6 +38,17 @@ class AddressRemoteDataSourceImpl implements AddressRemoteDataSource {
           .select('*')
           .eq('user_id', userId);
       return response.map((e) => UserAddressModel.fromMap(e)).toList();
+    } on PostgrestException catch (e) {
+      throw Failure(message: e.message);
+    } catch (e) {
+      throw Failure(message: e.toString());
+    }
+  }
+
+  @override
+  Future<void> deleteAddress(String id) async {
+    try {
+      await Supabase.instance.client.from('addresses').delete().eq('id', id);
     } on PostgrestException catch (e) {
       throw Failure(message: e.message);
     } catch (e) {
