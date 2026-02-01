@@ -6,6 +6,7 @@ abstract class AddressRemoteDataSource {
   Future<void> addAddress(UserAddressModel address);
   Future<List<UserAddressModel>> getAddresses();
   Future<void> deleteAddress(String id);
+  Future<void> changeDefaultAddress(String id);
 }
 
 class AddressRemoteDataSourceImpl implements AddressRemoteDataSource {
@@ -36,7 +37,8 @@ class AddressRemoteDataSourceImpl implements AddressRemoteDataSource {
       final response = await Supabase.instance.client
           .from('addresses')
           .select('*')
-          .eq('user_id', userId);
+          .eq('user_id', userId)
+          .order('created_at', ascending: false);
       return response.map((e) => UserAddressModel.fromMap(e)).toList();
     } on PostgrestException catch (e) {
       throw Failure(message: e.message);
@@ -49,6 +51,28 @@ class AddressRemoteDataSourceImpl implements AddressRemoteDataSource {
   Future<void> deleteAddress(String id) async {
     try {
       await Supabase.instance.client.from('addresses').delete().eq('id', id);
+    } on PostgrestException catch (e) {
+      throw Failure(message: e.message);
+    } catch (e) {
+      throw Failure(message: e.toString());
+    }
+  }
+
+  @override
+  Future<void> changeDefaultAddress(String id) async {
+    try {
+      final userId = Supabase.instance.client.auth.currentUser?.id;
+      if (userId == null) {
+        throw Failure(message: 'User not authenticated');
+      }
+      await Supabase.instance.client
+          .from('addresses')
+          .update({'is_default': false})
+          .eq('user_id', userId);
+      await Supabase.instance.client
+          .from('addresses')
+          .update({'is_default': true})
+          .eq('id', id);
     } on PostgrestException catch (e) {
       throw Failure(message: e.message);
     } catch (e) {
