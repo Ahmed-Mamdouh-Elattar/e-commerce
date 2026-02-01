@@ -2,6 +2,7 @@ import 'package:e_commerce/core/config/app_color.dart';
 import 'package:e_commerce/core/extensions/theme_extension.dart';
 import 'package:e_commerce/feature/address/domain/entities/user_address_entity.dart';
 import 'package:e_commerce/feature/address/presentation/widgets/address_text_key_and_value.dart';
+import 'package:e_commerce/feature/address/presentation/widgets/delete_address_button.dart';
 import 'package:flutter/material.dart';
 
 class AddressCardItem extends StatelessWidget {
@@ -50,10 +51,7 @@ class AddressCardItem extends StatelessWidget {
                 ),
               ],
             ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.delete, color: Colors.red),
-            ),
+            DeleteAddressButton(addressId: address.id!),
           ],
         ),
       ),

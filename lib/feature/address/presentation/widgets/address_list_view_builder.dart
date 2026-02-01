@@ -1,3 +1,5 @@
+import 'package:e_commerce/core/config/app_color.dart';
+import 'package:e_commerce/core/config/app_text_style.dart';
 import 'package:e_commerce/feature/address/presentation/providers/get_user_addresses_provider/get_user_addresses_provider.dart';
 import 'package:e_commerce/feature/address/presentation/widgets/address_card_item.dart';
 import 'package:e_commerce/feature/address/presentation/widgets/fake_address_card_item.dart';
@@ -13,6 +15,23 @@ class AddressListViewBuilder extends ConsumerWidget {
     final addresses = ref.watch(getUserAddressesProvider);
     return addresses.when(
       data: (data) {
+        if (data.isEmpty) {
+          return SliverFillRemaining(
+            hasScrollBody: false,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.location_on,
+                  size: 80,
+                  color: AppColor.primary100,
+                ),
+                const SizedBox(height: 20),
+                Text('No addresses found', style: AppTextStyle.medium20),
+              ],
+            ),
+          );
+        }
         return SliverList.separated(
           itemBuilder: (context, index) =>
               AddressCardItem(address: data[index]),
