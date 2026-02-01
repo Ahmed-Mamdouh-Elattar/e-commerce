@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'add_user_address_provider.dart';
+part of 'change_default_address_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -9,33 +9,34 @@ part of 'add_user_address_provider.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(AddUserAddress)
-final addUserAddressProvider = AddUserAddressProvider._();
+@ProviderFor(ChangeDefaultAddressNotifier)
+final changeDefaultAddressProvider = ChangeDefaultAddressNotifierProvider._();
 
-final class AddUserAddressProvider
-    extends $AsyncNotifierProvider<AddUserAddress, void> {
-  AddUserAddressProvider._()
+final class ChangeDefaultAddressNotifierProvider
+    extends $AsyncNotifierProvider<ChangeDefaultAddressNotifier, void> {
+  ChangeDefaultAddressNotifierProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'addUserAddressProvider',
+        name: r'changeDefaultAddressProvider',
         isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$addUserAddressHash();
+  String debugGetCreateSourceHash() => _$changeDefaultAddressNotifierHash();
 
   @$internal
   @override
-  AddUserAddress create() => AddUserAddress();
+  ChangeDefaultAddressNotifier create() => ChangeDefaultAddressNotifier();
 }
 
-String _$addUserAddressHash() => r'7c2c16eb69b25ead916459ce4157eec73cb6b941';
+String _$changeDefaultAddressNotifierHash() =>
+    r'2f8a17d497f4850c7b27bd2fba1d7ebde5cd601a';
 
-abstract class _$AddUserAddress extends $AsyncNotifier<void> {
+abstract class _$ChangeDefaultAddressNotifier extends $AsyncNotifier<void> {
   FutureOr<void> build();
   @$mustCallSuper
   @override
