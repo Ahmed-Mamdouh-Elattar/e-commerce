@@ -1,4 +1,4 @@
-import 'package:e_commerce/feature/address/domain/entities/user_address_entity.dart';
+import 'package:e_commerce/core/entities/user_address_entity.dart';
 
 abstract class AddressRepo {
   Future<void> addAddress(UserAddressEntity address);

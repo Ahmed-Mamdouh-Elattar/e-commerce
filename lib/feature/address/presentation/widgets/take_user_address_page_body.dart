@@ -2,7 +2,7 @@ import 'package:e_commerce/core/helper/assets.gen.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
 import 'package:e_commerce/core/helper/show_custom_dialogs.dart';
 import 'package:e_commerce/core/widgets/custom_eleveted_button.dart';
-import 'package:e_commerce/feature/address/domain/entities/user_address_entity.dart';
+import 'package:e_commerce/core/entities/user_address_entity.dart';
 import 'package:e_commerce/feature/address/presentation/providers/add_user_address_provider/add_user_address_provider.dart';
 import 'package:e_commerce/feature/address/presentation/providers/gps_provider/gps_provider.dart';
 import 'package:e_commerce/feature/address/presentation/widgets/building_and_floor_inputs_fields.dart';

@@ -1,4 +1,4 @@
-import 'package:e_commerce/feature/address/domain/entities/user_address_entity.dart';
+import 'package:e_commerce/core/entities/user_address_entity.dart';
 import 'package:e_commerce/feature/address/domain/usecases/get_user_addresses_usecase.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' show FutureProvider;
 

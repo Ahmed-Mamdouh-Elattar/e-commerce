@@ -1,4 +1,4 @@
-import 'package:e_commerce/feature/address/domain/entities/user_address_entity.dart';
+import 'package:e_commerce/core/entities/user_address_entity.dart';
 import 'package:e_commerce/feature/address/domain/usecases/add_user_address_usecase.dart';
 import 'package:e_commerce/feature/address/presentation/providers/get_user_addresses_provider/get_user_addresses_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

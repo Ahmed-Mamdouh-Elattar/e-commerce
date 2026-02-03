@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/error/failure.dart';
-import 'package:e_commerce/feature/address/data/models/user_address_model.dart';
+import 'package:e_commerce/core/models/user_address_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class AddressRemoteDataSource {

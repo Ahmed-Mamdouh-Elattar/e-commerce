@@ -1,6 +1,6 @@
 import 'package:e_commerce/core/config/app_color.dart';
 import 'package:e_commerce/core/extensions/theme_extension.dart';
-import 'package:e_commerce/feature/address/presentation/widgets/address_text_key_and_value.dart';
+import 'package:e_commerce/core/widgets/address_text_key_and_value.dart';
 import 'package:flutter/material.dart';
 
 class FakeAddressCardItem extends StatelessWidget {
