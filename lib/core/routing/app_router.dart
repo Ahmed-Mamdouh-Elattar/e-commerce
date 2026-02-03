@@ -4,6 +4,7 @@ import 'package:e_commerce/feature/address/presentation/routing/address_route.da
 import 'package:e_commerce/feature/authentication/presentation/routing/sign_in_route.dart';
 import 'package:e_commerce/feature/cart/presentation/routing/cart_route.dart';
 import 'package:e_commerce/feature/home/presentation/routing/home_route.dart';
+import 'package:e_commerce/feature/payment/presentation/routing/payment_route.dart';
 import 'package:e_commerce/feature/profile/presentation/routing/profile_route.dart';
 import 'package:e_commerce/feature/search/presentation/routing/search_route.dart';
 import 'package:e_commerce/feature/splash/presentation/routing/splash_route.dart';
@@ -32,6 +33,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       statefulShellRoute,
       addressRoute,
       chooseAddressRoute,
+      paymentRoutes,
     ],
   );
 });
