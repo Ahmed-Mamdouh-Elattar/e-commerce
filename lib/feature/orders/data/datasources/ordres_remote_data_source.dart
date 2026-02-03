@@ -3,11 +3,13 @@ import 'dart:developer';
 import 'package:e_commerce/core/error/failure.dart';
 import 'package:e_commerce/core/models/order_model.dart';
 import 'package:e_commerce/core/models/oreder_item_model.dart';
+import 'package:e_commerce/core/models/user_address_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class OrdresRemoteDataSource {
   Future<List<OrderModel>> getOrders();
   Future<List<OrederItemModel>> getOrderProducts(String orderId);
+  Future<UserAddressModel> getOrderAddress(String addressId);
 }
 
 class OrdresRemoteDataSourceImpl implements OrdresRemoteDataSource {
@@ -51,6 +53,26 @@ class OrdresRemoteDataSourceImpl implements OrdresRemoteDataSource {
           .eq('order_id', orderId);
       log(response.toString());
       return response.map((e) => OrederItemModel.fromJson(e)).toList();
+    } on PostgrestException catch (e) {
+      throw Failure(message: e.message);
+    } catch (e) {
+      throw Failure(message: e.toString());
+    }
+  }
+
+  @override
+  Future<UserAddressModel> getOrderAddress(String addressId) async {
+    try {
+      final userId = Supabase.instance.client.auth.currentUser?.id;
+      if (userId == null) {
+        throw Failure(message: "User not found");
+      }
+      final response = await Supabase.instance.client
+          .from('addresses')
+          .select('*')
+          .eq('id', addressId)
+          .eq('user_id', userId);
+      return UserAddressModel.fromMap(response.first);
     } on PostgrestException catch (e) {
       throw Failure(message: e.message);
     } catch (e) {
