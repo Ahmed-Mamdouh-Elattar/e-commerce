@@ -1,3 +1,6 @@
+import 'package:e_commerce/core/models/product_model.dart';
+import 'package:e_commerce/feature/orders/domain/entities/order_item_entity.dart';
+
 class OrederItemModel {
   final String? id;
   final String? orderId;
@@ -5,6 +8,7 @@ class OrederItemModel {
   final int? quantity;
   final String? color;
   final String? size;
+  final ProductModel? product;
   OrederItemModel({
     this.id,
     this.orderId,
@@ -12,6 +16,7 @@ class OrederItemModel {
     this.quantity,
     this.color,
     this.size,
+    this.product,
   });
 
   factory OrederItemModel.fromJson(Map<String, dynamic> json) {
@@ -22,6 +27,9 @@ class OrederItemModel {
       quantity: json['quantity'],
       color: json['color'],
       size: json['size'],
+      product: json['products'] != null
+          ? ProductModel.fromJson(json['products'])
+          : null,
     );
   }
 
@@ -50,6 +58,20 @@ class OrederItemModel {
       quantity: quantity ?? this.quantity,
       color: color ?? this.color,
       size: size ?? this.size,
+    );
+  }
+
+  OrderItemEntity toOrderItemEntity() {
+    return OrderItemEntity(
+      id: id,
+      orderId: orderId,
+      productId: productId,
+      quantity: quantity,
+      color: color,
+      size: size,
+      productImage: product?.images,
+      productName: product?.title,
+      productPrice: product?.price,
     );
   }
 }
