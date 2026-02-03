@@ -8,3 +8,4 @@ const String subabaseUrl = 'SUPABASE_URL';
 const String subabaseAnonKey = 'SUPABASE_ANON_KEY';
 const String androidClientId = 'ANDROID_CLIENT_ID';
 const String webClientId = 'Web_CLIENT_ID';
+const String stripePublishableKey = 'STRIPE_PUBLISHABLE_KEY';
