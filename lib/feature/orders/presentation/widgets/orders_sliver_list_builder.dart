@@ -1,4 +1,4 @@
-import 'package:e_commerce/feature/orders/presentation/providers/get_orders_provider.dart';
+import 'package:e_commerce/feature/orders/presentation/providers/get_orders_provider/get_orders_provider.dart';
 import 'package:e_commerce/feature/orders/presentation/widgets/empty_orders_list.dart';
 import 'package:e_commerce/feature/orders/presentation/widgets/fake_order_item.dart';
 import 'package:e_commerce/feature/orders/presentation/widgets/order_item.dart';

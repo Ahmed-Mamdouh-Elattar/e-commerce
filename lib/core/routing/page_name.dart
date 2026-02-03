@@ -26,4 +26,6 @@ class PageName {
   static const String chooseAddress = '/choose-address';
   static const String orderSuccess = '/order-success';
   static const String orders = '/orders';
+  static const String orderDetailsPath = 'order-details';
+  static const String orderDetails = '$orders/$orderDetailsPath';
 }
