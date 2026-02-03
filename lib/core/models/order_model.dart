@@ -1,3 +1,5 @@
+import 'package:e_commerce/feature/orders/domain/entities/order_entity.dart';
+
 class OrderModel {
   final String? id;
   final String? userId;
@@ -50,6 +52,15 @@ class OrderModel {
       status: status ?? this.status,
       addressId: addressId ?? this.addressId,
       paymentId: paymentId ?? this.paymentId,
+    );
+  }
+
+  OrderEntity toOrderEntity() {
+    return OrderEntity(
+      id: id,
+      totalPrice: totalPrice,
+      status: status,
+      addressId: addressId,
     );
   }
 }
