@@ -25,4 +25,5 @@ class PageName {
   static const String addresses = '/addresses';
   static const String chooseAddress = '/choose-address';
   static const String orderSuccess = '/order-success';
+  static const String orders = '/orders';
 }

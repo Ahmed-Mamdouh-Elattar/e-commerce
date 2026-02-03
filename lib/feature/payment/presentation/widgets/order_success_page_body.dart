@@ -3,9 +3,11 @@ import 'package:e_commerce/core/config/app_text_style.dart';
 import 'package:e_commerce/core/extensions/theme_extension.dart';
 import 'package:e_commerce/core/helper/assets.gen.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
+import 'package:e_commerce/core/routing/page_name.dart';
 import 'package:e_commerce/core/widgets/custom_eleveted_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class OrderSuccessPageBody extends StatelessWidget {
   const OrderSuccessPageBody({super.key});
@@ -46,7 +48,7 @@ class OrderSuccessPageBody extends StatelessWidget {
                 CustomElevetedButton(
                   label: 'See Order Details',
                   onPressed: () {
-                    // context.go(PageName.order);
+                    context.go(PageName.orders);
                   },
                 ),
               ],
