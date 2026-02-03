@@ -1,4 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:e_commerce/core/entities/user_address_entity.dart';
 import 'package:e_commerce/core/error/failure.dart';
 import 'package:e_commerce/feature/orders/data/datasources/ordres_remote_data_source.dart';
 import 'package:e_commerce/feature/orders/domain/entities/order_entity.dart';
@@ -27,5 +28,15 @@ class OrdersRepoImpl implements OrdersRepo {
     }
     final orderItem = await _remoteDataSource.getOrderProducts(orderId);
     return orderItem.map((e) => e.toOrderItemEntity()).toList();
+  }
+
+  @override
+  Future<UserAddressEntity> getOrderAddress(String addressId) async {
+    final result = await _connectivity.checkConnectivity();
+    if (result.contains(ConnectivityResult.none)) {
+      throw Failure(message: 'No internet connection');
+    }
+    final address = await _remoteDataSource.getOrderAddress(addressId);
+    return address.toUserAddressEntity();
   }
 }
