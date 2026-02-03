@@ -55,6 +55,10 @@ class $AssetsImagesGen {
   AssetGenImage get googleIcon =>
       const AssetGenImage('assets/images/google_icon.png');
 
+  /// File path: assets/images/no_orders.png
+  AssetGenImage get noOrders =>
+      const AssetGenImage('assets/images/no_orders.png');
+
   /// File path: assets/images/oreder_success.png
   AssetGenImage get orederSuccess =>
       const AssetGenImage('assets/images/oreder_success.png');
@@ -85,6 +89,7 @@ class $AssetsImagesGen {
     email,
     error,
     googleIcon,
+    noOrders,
     orederSuccess,
     profile,
     search,
