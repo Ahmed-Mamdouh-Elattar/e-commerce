@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/config/app_text_style.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
 import 'package:e_commerce/feature/orders/presentation/helper/order_details_params.dart';
+import 'package:e_commerce/feature/orders/presentation/widgets/address_card_builder.dart';
 import 'package:e_commerce/feature/orders/presentation/widgets/sliver_order_products_items_list.dart';
 import 'package:flutter/material.dart';
 
@@ -52,7 +53,7 @@ class OrderDetailsPageBody extends StatelessWidget {
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 8)),
           SliverToBoxAdapter(
-            child: Text("123 Main St", style: AppTextStyle.regular14),
+            child: AddressCardBuilder(addressId: params.order.addressId!),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 50)),
         ],
