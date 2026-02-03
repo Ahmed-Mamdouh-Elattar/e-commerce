@@ -1,11 +1,11 @@
-class OrdersModel {
+class OrderModel {
   final String? id;
   final String? userId;
   final double? totalPrice;
   final String? status;
   final String? addressId;
   final String? paymentId;
-  OrdersModel({
+  OrderModel({
     this.id,
     this.userId,
     this.totalPrice,
@@ -14,8 +14,8 @@ class OrdersModel {
     this.paymentId,
   });
 
-  factory OrdersModel.fromJson(Map<String, dynamic> json) {
-    return OrdersModel(
+  factory OrderModel.fromJson(Map<String, dynamic> json) {
+    return OrderModel(
       id: json['id'],
       userId: json['user_id'],
       totalPrice: json['total_price'],
@@ -35,7 +35,7 @@ class OrdersModel {
     };
   }
 
-  OrdersModel copyWith({
+  OrderModel copyWith({
     String? id,
     String? userId,
     double? totalPrice,
@@ -43,7 +43,7 @@ class OrdersModel {
     String? addressId,
     String? paymentId,
   }) {
-    return OrdersModel(
+    return OrderModel(
       id: id ?? this.id,
       userId: userId ?? this.userId,
       totalPrice: totalPrice ?? this.totalPrice,

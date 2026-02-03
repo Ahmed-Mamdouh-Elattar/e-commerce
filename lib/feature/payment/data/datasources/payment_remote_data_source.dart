@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/error/failure.dart';
-import 'package:e_commerce/core/models/orders_model.dart';
+import 'package:e_commerce/core/models/order_model.dart';
 import 'package:e_commerce/core/models/oreder_item_model.dart';
 import 'package:e_commerce/core/services/stripe_service/stripe_service.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -29,7 +29,7 @@ class PaymentRemoteDataSourceImpl implements PaymentRemoteDataSource {
       final orderResponse = await Supabase.instance.client
           .from('orders')
           .insert(
-            OrdersModel(
+            OrderModel(
               userId: userId,
               addressId: addressId,
               paymentId: paymentId,
