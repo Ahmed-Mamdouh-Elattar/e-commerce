@@ -54,6 +54,7 @@ dependencies:
   geolocator: ^14.0.2
   geocoding: ^4.0.0
   flutter_stripe: ^12.2.0
+  firebase_core: ^4.4.0
 
 dev_dependencies:
   flutter_test:
