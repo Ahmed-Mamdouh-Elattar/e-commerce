@@ -1,18 +1,20 @@
 import 'package:e_commerce/core/config/app_theme.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
 import 'package:e_commerce/core/routing/app_router.dart';
+import 'package:e_commerce/core/services/notification_service/intialize_app_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await intializeAppNotification();
   await dotenv.load(fileName: ".env");
   await Supabase.initialize(
     url: dotenv.env[subabaseUrl]!,
