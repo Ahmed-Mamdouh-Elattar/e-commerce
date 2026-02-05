@@ -4,6 +4,7 @@ import 'package:e_commerce/feature/address/presentation/routing/address_route.da
 import 'package:e_commerce/feature/authentication/presentation/routing/sign_in_route.dart';
 import 'package:e_commerce/feature/cart/presentation/routing/cart_route.dart';
 import 'package:e_commerce/feature/home/presentation/routing/home_route.dart';
+import 'package:e_commerce/feature/notification/presentation/routing/notification_route.dart';
 import 'package:e_commerce/feature/orders/presentation/routing/orders_route.dart';
 import 'package:e_commerce/feature/payment/presentation/routing/payment_route.dart';
 import 'package:e_commerce/feature/profile/presentation/routing/profile_route.dart';
@@ -14,10 +15,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 final appRouterProvider = Provider<GoRouter>((ref) {
   final routerNotifier = ref.watch(routerNotifierProvider);
 
   return GoRouter(
+    navigatorKey: rootNavigatorKey,
     refreshListenable: routerNotifier,
     redirect: (context, state) {
       final location = state.uri.toString();
@@ -43,14 +46,7 @@ final statefulShellRoute = StatefulShellRoute.indexedStack(
       BottomNavBarMainWrapper(navigationShell: navigationShell),
   branches: [
     StatefulShellBranch(routes: [homeRoute, searchRoute, cartRoute]),
-    StatefulShellBranch(
-      routes: [
-        GoRoute(
-          path: '/Notification',
-          builder: (context, state) => const SizedBox(),
-        ),
-      ],
-    ),
+    StatefulShellBranch(routes: [notificationRoute]),
     StatefulShellBranch(routes: [ordersRoute]),
     StatefulShellBranch(
       routes: [profileRoute, wishlistRoute, updateProfileRoute, addressesRoute],
