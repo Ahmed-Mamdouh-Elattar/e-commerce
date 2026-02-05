@@ -24,8 +24,6 @@ class ProfileTileItemsProperities extends StatelessWidget {
           },
         ),
         const SizedBox(height: 8),
-        ProfileTileItem(title: "Payment", onTap: () {}),
-        const SizedBox(height: 8),
         ProfileTileItem(title: "Help", onTap: () {}),
         const SizedBox(height: 8),
         ProfileTileItem(title: "Support", onTap: () {}),
