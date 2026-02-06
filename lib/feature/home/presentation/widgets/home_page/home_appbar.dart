@@ -2,6 +2,7 @@ import 'package:e_commerce/core/config/app_color.dart';
 import 'package:e_commerce/core/helper/assets.gen.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
 import 'package:e_commerce/core/routing/page_name.dart';
+import 'package:e_commerce/feature/profile/presentation/widgets/user_home_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vector_graphics/vector_graphics.dart';
@@ -14,13 +15,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       actionsPadding: const EdgeInsets.symmetric(horizontal: kPadding),
       leadingWidth: 40 + kPadding,
-      leading: Row(
+      leading: const Row(
         children: [
-          const SizedBox(width: kPadding),
-          CircleAvatar(
-            radius: 20,
-            child: Image.asset(Assets.images.email.path),
-          ),
+          SizedBox(width: kPadding),
+          UserHomeImage(),
         ],
       ),
       actions: [
