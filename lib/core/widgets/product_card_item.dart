@@ -41,7 +41,9 @@ class ProductCardItem extends StatelessWidget {
                 Text(
                   product.title ?? "Men's T-Shirt",
                   style: AppTextStyle.medium14.copyWith(
-                    color: AppColor.black100,
+                    color: context.isDarkMode
+                        ? Colors.white
+                        : AppColor.black100,
                   ),
                 ),
                 const SizedBox(height: 8),

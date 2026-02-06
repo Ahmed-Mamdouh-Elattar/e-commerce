@@ -26,7 +26,13 @@ class ProductPropertyTile extends StatelessWidget {
         children: [
           valueChild,
           const SizedBox(width: 29),
-          VectorGraphic(loader: AssetBytesLoader(Assets.svg.arrowDown)),
+          VectorGraphic(
+            loader: AssetBytesLoader(Assets.svg.arrowDown),
+            colorFilter: ColorFilter.mode(
+              context.isDarkMode ? Colors.white : Colors.black,
+              BlendMode.srcIn,
+            ),
+          ),
         ],
       ),
       tileColor: context.isDarkMode ? AppColor.bgDark2 : AppColor.bgLight2,

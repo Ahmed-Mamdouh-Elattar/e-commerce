@@ -24,9 +24,11 @@ class OrderSuccessPageBody extends StatelessWidget {
           child: Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: kPadding),
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-              color: AppColor.bgLight1,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(20),
+              ),
+              color: context.isDarkMode ? AppColor.bgDark1 : AppColor.bgLight1,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

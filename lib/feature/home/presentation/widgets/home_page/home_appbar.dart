@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/config/app_color.dart';
+import 'package:e_commerce/core/extensions/theme_extension.dart';
 import 'package:e_commerce/core/helper/assets.gen.dart';
 import 'package:e_commerce/core/helper/constansts.dart';
 import 'package:e_commerce/core/routing/page_name.dart';
@@ -41,7 +42,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: AppColor.bgLight2,
+          color: context.isDarkMode ? AppColor.bgDark2 : AppColor.bgLight2,
           borderRadius: BorderRadius.circular(100),
         ),
         width: 72,

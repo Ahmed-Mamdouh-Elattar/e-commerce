@@ -14,6 +14,10 @@ class SearchButton extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
       tileColor: context.isDarkMode ? AppColor.bgDark2 : AppColor.bgLight2,
       leading: VectorGraphic(
+        colorFilter: ColorFilter.mode(
+          context.isDarkMode ? Colors.white : AppColor.black100,
+          BlendMode.srcIn,
+        ),
         loader: AssetBytesLoader(Assets.svg.search),
         height: 16,
         width: 16,

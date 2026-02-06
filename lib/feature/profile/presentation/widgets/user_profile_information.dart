@@ -43,7 +43,9 @@ class UserProfileInformation extends ConsumerWidget {
                   Text(
                     userData.email ?? '',
                     style: AppTextStyle.medium16.copyWith(
-                      color: AppColor.black100.withValues(alpha: 0.5),
+                      color: context.isDarkMode
+                          ? Colors.white.withValues(alpha: 0.5)
+                          : AppColor.black100.withValues(alpha: 0.5),
                     ),
                   ),
                 ],

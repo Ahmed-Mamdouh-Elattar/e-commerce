@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/config/app_color.dart';
+import 'package:e_commerce/core/extensions/theme_extension.dart';
 import 'package:e_commerce/core/helper/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +12,7 @@ class BottomNavBarMainWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = context.isDarkMode;
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: SizedBox(
@@ -26,7 +28,9 @@ class BottomNavBarMainWrapper extends StatelessWidget {
           },
 
           elevation: 0,
-          backgroundColor: Colors.white,
+          backgroundColor: context.isDarkMode
+              ? AppColor.bgDark1
+              : AppColor.bgLight1,
 
           destinations: [
             NavigationDestination(
@@ -34,8 +38,8 @@ class BottomNavBarMainWrapper extends StatelessWidget {
                 loader: AssetBytesLoader(Assets.svg.home),
                 colorFilter: navigationShell.currentIndex == 0
                     ? null
-                    : const ColorFilter.mode(
-                        AppColor.black100,
+                    : ColorFilter.mode(
+                        isDarkMode ? Colors.white : AppColor.black100,
                         BlendMode.srcIn,
                       ),
               ),
@@ -46,8 +50,8 @@ class BottomNavBarMainWrapper extends StatelessWidget {
                 loader: AssetBytesLoader(Assets.svg.notificationbing),
                 colorFilter: navigationShell.currentIndex == 1
                     ? null
-                    : const ColorFilter.mode(
-                        AppColor.black100,
+                    : ColorFilter.mode(
+                        isDarkMode ? Colors.white : AppColor.black100,
                         BlendMode.srcIn,
                       ),
               ),
@@ -58,8 +62,8 @@ class BottomNavBarMainWrapper extends StatelessWidget {
                 loader: AssetBytesLoader(Assets.svg.receipt),
                 colorFilter: navigationShell.currentIndex == 2
                     ? null
-                    : const ColorFilter.mode(
-                        AppColor.black100,
+                    : ColorFilter.mode(
+                        isDarkMode ? Colors.white : AppColor.black100,
                         BlendMode.srcIn,
                       ),
               ),
@@ -70,8 +74,8 @@ class BottomNavBarMainWrapper extends StatelessWidget {
                 loader: AssetBytesLoader(Assets.svg.person),
                 colorFilter: navigationShell.currentIndex == 3
                     ? null
-                    : const ColorFilter.mode(
-                        AppColor.black100,
+                    : ColorFilter.mode(
+                        isDarkMode ? Colors.white : AppColor.black100,
                         BlendMode.srcIn,
                       ),
               ),
