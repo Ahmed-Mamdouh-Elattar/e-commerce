@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/routing/page_name.dart';
 import 'package:e_commerce/feature/profile/presentation/widgets/profile_tile_item.dart';
-import 'package:flutter/widgets.dart';
+import 'package:e_commerce/feature/theme/presentation/widgets/theme_switching.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ProfileTileItemsProperities extends StatelessWidget {
@@ -10,6 +11,8 @@ class ProfileTileItemsProperities extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const ThemeSwitching(),
+        const SizedBox(height: 8),
         ProfileTileItem(
           title: "Address",
           onTap: () async {
