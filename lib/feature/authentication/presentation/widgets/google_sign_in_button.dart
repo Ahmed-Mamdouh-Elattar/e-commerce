@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/config/app_color.dart';
 import 'package:e_commerce/core/config/app_text_style.dart';
 import 'package:e_commerce/core/error/failure_extension.dart';
+import 'package:e_commerce/core/extensions/theme_extension.dart';
 import 'package:e_commerce/core/helper/assets.gen.dart';
 import 'package:e_commerce/core/helper/show_custom_dialogs.dart';
 import 'package:e_commerce/core/routing/page_name.dart';
@@ -35,7 +36,7 @@ class GoogleSignInButton4 extends ConsumerWidget {
     });
     return Container(
       decoration: BoxDecoration(
-        color: AppColor.bgLight2,
+        color: context.isDarkMode ? AppColor.bgDark2 : AppColor.bgLight2,
         borderRadius: BorderRadius.circular(100),
       ),
       child: ListTile(
@@ -45,7 +46,12 @@ class GoogleSignInButton4 extends ConsumerWidget {
           padding: const EdgeInsets.all(14),
           child: Image.asset(Assets.images.googleIcon.path),
         ),
-        title: Text("Continue With Google", style: AppTextStyle.medium16),
+        title: Text(
+          "Continue With Google",
+          style: AppTextStyle.medium16.copyWith(
+            color: context.isDarkMode ? Colors.white : Colors.black,
+          ),
+        ),
       ),
     );
   }
