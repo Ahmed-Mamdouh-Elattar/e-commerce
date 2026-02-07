@@ -34,23 +34,19 @@ class GoogleSignInButton4 extends ConsumerWidget {
         },
       );
     });
-    return Container(
-      decoration: BoxDecoration(
-        color: context.isDarkMode ? AppColor.bgDark2 : AppColor.bgLight2,
-        borderRadius: BorderRadius.circular(100),
+    return ListTile(
+      tileColor: context.isDarkMode ? AppColor.bgDark2 : AppColor.bgLight2,
+      onTap: () =>
+          ref.read(signInWithGoogleProvider.notifier).signInWithGoogle(),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+      leading: Padding(
+        padding: const EdgeInsets.all(14),
+        child: Image.asset(Assets.images.googleIcon.path),
       ),
-      child: ListTile(
-        onTap: () =>
-            ref.read(signInWithGoogleProvider.notifier).signInWithGoogle(),
-        leading: Padding(
-          padding: const EdgeInsets.all(14),
-          child: Image.asset(Assets.images.googleIcon.path),
-        ),
-        title: Text(
-          "Continue With Google",
-          style: AppTextStyle.medium16.copyWith(
-            color: context.isDarkMode ? Colors.white : Colors.black,
-          ),
+      title: Text(
+        "Continue With Google",
+        style: AppTextStyle.medium16.copyWith(
+          color: context.isDarkMode ? Colors.white : Colors.black,
         ),
       ),
     );
